@@ -63,7 +63,7 @@ ostream& operator<<(ostream& os, const Titular& s){
     return os;}
 
 class Cont {
-    int suma;
+    double suma;
     std::string moneda;
     std::string iban;
     float ratadobanzii;
@@ -91,7 +91,7 @@ public:
     friend ostream& operator<<(ostream& os, const Cont& cont);//afisare
     //friend istream& operator>>(istream& os, const Cont& ob);//citire
 
-    int& getsuma(){return suma;}
+    double& getsuma(){return suma;}
 
 
     // metode - 3
@@ -105,7 +105,7 @@ public:
          suma = suma + sumadep * curs[{moneda, monedadep}];
     }
     // fctia 2
-    void extragere(int sumaextr, const std::string& monedaextr) {
+    void extragere(double sumaextr, const std::string& monedaextr) {
         std::map<std::pair<std::string, std::string>, double> curs;
         curs[{"lei", "euro"}] = 5;
         curs[{"euro", "lei"}]= 0.2;
@@ -158,8 +158,8 @@ ostream& operator<<(ostream& os, const Cont& cont){
 
 class Banca{
     std::string nume;
-    [[maybe_unused]] std::string sucursala;
-    [[maybe_unused]] std::vector<Cont> conturi;
+    std::string sucursala;
+    std::vector<Cont> conturi;
 
 public:
     // adauga cont in vector
