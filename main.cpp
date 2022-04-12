@@ -68,7 +68,7 @@ class Cont {
     std::string iban;
     float ratadobanzii;
     float comision;
-    Titular titular;
+    const Titular titular;
 
 public:
     //[[maybe_unused]] [[nodiscard]] const Titular &getTitular() const;
