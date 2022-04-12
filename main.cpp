@@ -46,11 +46,11 @@ public:
         return *this;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Titular& titular) {
+
+    friend ostream& operator<<(ostream& os, const Titular& titular){
         os << "Nume: " << titular.nume << ", Prenume: " << titular.prenume <<", varsta:"<<titular.varsta<<"cnp:"<<titular.cnp<<", seria "<<titular.serie<< "\n";
         return os;
-    }
-    friend ostream& operator<<(ostream& os, const Titular& s);//afisare
+    }//afisare
     //friend istream& operator>>(istream& os, const Titular& ob);//citire
     // fctie verificare varsta
 
@@ -58,9 +58,7 @@ public:
 
 
 
-ostream& operator<<(ostream& os, const Titular& s){
-    os<<"Nume: "<<s.nume<<"\n";
-    return os;}
+
 
 class Cont {
     double suma;
