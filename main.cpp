@@ -46,7 +46,7 @@ public:
         return *this;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, Titular& titular) {
+    friend std::ostream& operator<<(std::ostream& os, const Titular& titular) {
         os << "Nume: " << titular.nume << ", Prenume: " << titular.prenume <<", varsta:"<<titular.varsta<<"cnp:"<<titular.cnp<<", seria "<<titular.serie<< "\n";
         return os;
     }
