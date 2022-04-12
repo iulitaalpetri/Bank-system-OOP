@@ -71,7 +71,7 @@ class Cont {
     Titular titular;
 
 public:
-    [[maybe_unused]] [[nodiscard]] const Titular &getTitular() const;
+    //[[maybe_unused]] [[nodiscard]] const Titular &getTitular() const;
 
     // constr init
     Cont(const Titular& titular_,int suma_, std::string  moneda_, std::string  iban_, float ratadobanzii_, float comision_) :
@@ -81,7 +81,7 @@ public:
             ratadobanzii(ratadobanzii_),
             comision(comision_),titular(titular_)
 
-    { titular= titular_;
+    {
         cout<<"Constr init cont"<<endl;
         if ( titular_.getvarsta()<18) std::cout<<"Nu isi poate face cont, are nevoie de tutore"<<endl;}
 
@@ -142,9 +142,9 @@ ostream& operator<<(ostream& os, const Cont& cont){
     os<<"Suma: "<<cont.suma<<", moneda:"<<cont.moneda<<", iban:"<<cont.iban<<", rata dobanzii:"<<cont.ratadobanzii<<", comision"<<cont.comision<<"\n";
     return os;}
 
-[[maybe_unused]] const Titular &Cont::getTitular() const {
-    return titular;
-}
+//[[maybe_unused]] const Titular &Cont::getTitular() const {
+//    return titular;
+//}
 
 
 
