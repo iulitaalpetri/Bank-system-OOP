@@ -14,6 +14,10 @@ contcurent::contcurent(float abonament_telefon_, float utilitati_):
     if(suma< suma_min) throw eroare_suma_cont();
     else std::cout<<"constr init cont_curent"<< std::endl;
 }
+
+Cont *contcurent::clone() const {
+    return new contcurent(*this);
+}
 contcurent::~contcurent() noexcept {
     std::cout<<"Destructor derivata"<<std::endl;
 }
@@ -23,16 +27,13 @@ void contcurent::afisare(std::ostream &os) const {
     Cont::afisare(os);
     os << "abonament telefon:"<<abonament_telefon<<", cost utilitati:"<<utilitati << "\n";
 
-
 }
 
 void contcurent::plata_abonament() {
 
 
 
-    time_t now = time(0);
-    tm *local_time = localtime(&now);
-    char* date = ctime(&now);
+
 
     int zi = local_time->tm_mday;
     if(zi == 1){
@@ -47,9 +48,7 @@ void contcurent::plata_utilitati() {
 
 
 
-    time_t now = time(0);
-    tm *local_time = localtime(&now);
-    char* date = ctime(&now);
+
 
     int zi = local_time->tm_mday;
     if(zi == 15){
@@ -61,14 +60,7 @@ void contcurent::plata_utilitati() {
 
 void contcurent::extragere(int sumaextr, const std::string monedaextr) {
 
-    time_t now = time(0);
-    tm *local_time = localtime(&now);
-    char* date = ctime(&now);
-    std::map<std::pair<std::string, std::string>, double> curs;
-    curs[{"lei", "euro"}] = 5;
-    curs[{"euro", "lei"}]= 0.2;
-    curs[{"lei", "lei"}]= 1;
-    curs[{"euro", "euro"}] = 1;
+
     sumaextr= sumaextr* curs[{moneda, monedaextr}];
     if(comision* suma< sumaextr) throw eroare_fonduri_insuficiente();
     else suma= suma- comision* sumaextr;
@@ -77,14 +69,8 @@ void contcurent::extragere(int sumaextr, const std::string monedaextr) {
 }
 
 void contcurent::depunere(int sumadep, const std::string monedadep) {
-    time_t now = time(0);
-    tm *local_time = localtime(&now);
-    char* date = ctime(&now);
-    std::map<std::pair<std::string, std::string>, double> curs;
-    curs[{"lei", "euro"}] = 5;
-    curs[{"euro", "lei"}]= 0.2;
-    curs[{"lei", "lei"}]= 1;
-    curs[{"euro", "euro"}] = 1;
+
+
     suma = suma + sumadep * curs[{moneda, monedadep}];
     istoric_tranzactii.push_back(std::make_tuple(date, "Depunere numerar", sumadep));
 

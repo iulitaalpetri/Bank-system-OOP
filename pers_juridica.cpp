@@ -13,7 +13,7 @@ pers_juridica::pers_juridica(std::string nume_reprezentant_, std::string prenume
         nume_reprezentant(nume_reprezentant_), prenume_reprezentant(prenume_reprezentant_), nume_firma(nume_firma_){
     std::cout<<"constr init pers_jur- derivata"<< std::endl;
 }
-pers_juridica::~pers_juridica() noexcept {
+pers_juridica::~pers_juridica()  {
     std::cout<<"destructor pers_jurid- derivata"<<std::endl;
 }
 

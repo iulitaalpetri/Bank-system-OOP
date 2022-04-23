@@ -14,7 +14,6 @@
 class cont_premium:public Cont{
     int taxa_init;
     static const int suma_min= 1000;
-    std::shared_ptr<Cont> clone() const ;//pointer clasa de baza
 
 public:
     cont_premium(int taxa_init_);

@@ -7,20 +7,10 @@
 #include "exceptii.h"
 #include "titular.h"
 
-//Cont::Cont(Titular titular_, int suma_, std::string  moneda_, std::string  iban_) :
-//titular(titular_), suma(suma_),
-//moneda(std::move(moneda_)),
-//iban(std::move(iban_)) {
-//    std::cout << "Constr init cont" << std::endl;
-//    if (titular_.isId() == 1) {
-//        titular_.verificare();
-//
-//    }//throw o exceptie aici
-//}
-// dai throw exceptie in clasa derivata
+
 Cont::Cont() {
-    std::cout<<"constr init"<< std::endl;
-}
+
+};
 int Cont::getSuma() const {
     return suma;
 }

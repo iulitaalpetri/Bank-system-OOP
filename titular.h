@@ -12,7 +12,7 @@ public:
     Titular(bool id);
 
 protected:
-    Titular(const Titular&) = default;
+    //Titular(const Titular&) = default;
     Titular& operator=(const Titular&) = default;//op =
     virtual void afisare(std::ostream& os) const ;
 public:

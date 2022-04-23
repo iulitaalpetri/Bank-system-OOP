@@ -42,21 +42,13 @@ void cont_standard::efectuare_plata(int luna) {
 }
 
 void cont_standard::depunere(int sumadep, const std::string monedadep) {
-    std::map<std::pair<std::string, std::string>, double> curs;
-    curs[{"lei", "euro"}] = 5;
-    curs[{"euro", "lei"}]= 0.2;
-    curs[{"lei", "lei"}]= 1;
-    curs[{"euro", "euro"}] = 1;
+
     suma = suma + sumadep * curs[{moneda, monedadep}];
 
 }
 
 void cont_standard::extragere(int sumaextr, const std::string monedaextr) {
-    std::map<std::pair<std::string, std::string>, double> curs;
-    curs[{"lei", "euro"}] = 5;
-    curs[{"euro", "lei"}]= 0.2;
-    curs[{"lei", "lei"}]= 1;
-    curs[{"euro", "euro"}] = 1;
+
     sumaextr= sumaextr* curs[{moneda, monedaextr}];
     if(suma< sumaextr) throw eroare_fonduri_insuficiente();
     else suma= suma- comision* sumaextr;
@@ -64,11 +56,7 @@ void cont_standard::extragere(int sumaextr, const std::string monedaextr) {
 }
 
 void cont_standard::tranzactie(Cont &other_cont, int sumatranz) {
-    std::map<std::pair<std::string, std::string>, double> curs;
-    curs[{"lei", "euro"}] = 5;
-    curs[{"euro", "lei"}]= 0.2;
-    curs[{"lei", "lei"}]= 1;
-    curs[{"euro", "euro"}] = 1;
+
     other_cont.getsuma()= other_cont.getsuma()+ sumatranz * curs[{moneda, other_cont.getmoneda()}] ;
     if(sumatranz< 100) throw eroare_tranzactie();
     else if(suma< sumatranz) throw eroare_fonduri_insuficiente();
