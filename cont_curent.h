@@ -1,4 +1,6 @@
+#pragma once
 #include <iostream>
+
 #include <string>
 #include <utility>
 #include <vector>
@@ -6,7 +8,7 @@
 #include <bits/stdc++.h>
 #include <ctime>
 #include <tuple>
-#include "exceptii.h"
+
 #include "cont.h"
 
 class contcurent : public Cont{
@@ -21,8 +23,8 @@ class contcurent : public Cont{
 
 
 public:
-    Cont *clone() const override ;
-
+    //Cont *clone() const override ;
+    contcurent();
     contcurent(float abonament_telefon_, float utilitati_);
 
 

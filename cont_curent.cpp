@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <utility>
@@ -6,7 +7,7 @@
 #include "exceptii.h"
 #include "cont.h"
 #include "cont_curent.h"
-
+contcurent::contcurent() {}
 contcurent::contcurent(float abonament_telefon_, float utilitati_):
         abonament_telefon(abonament_telefon_), utilitati(utilitati_){
     if(titular.isId()==0) throw eroare_cont_curent();
@@ -15,10 +16,10 @@ contcurent::contcurent(float abonament_telefon_, float utilitati_):
     else std::cout<<"constr init cont_curent"<< std::endl;
 }
 
-Cont *contcurent::clone() const {
-    return new contcurent(*this);
-}
-contcurent::~contcurent() noexcept {
+//Cont *contcurent::clone() const {
+//    return new contcurent(*this);
+//}
+contcurent::~contcurent()  {
     std::cout<<"Destructor derivata"<<std::endl;
 }
 

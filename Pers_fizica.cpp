@@ -17,9 +17,9 @@ void pers_fizica::afisare(std::ostream &os) const {
     os<<"nume:"<<nume<<", prenume:"<<prenume<<", varsta:"<<varsta<<", cnp"<<cnp<<std::endl;
 
 }
+pers_fizica::pers_fizica() {}
 
-
-pers_fizica::~pers_fizica() noexcept {
+pers_fizica::~pers_fizica() {
     std::cout<<"destructor pers_fizica- derivata"<<std::endl;
 };
 

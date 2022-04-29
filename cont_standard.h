@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <utility>
@@ -6,6 +7,7 @@
 #include <bits/stdc++.h>
 #include <ctime>
 #include "exceptii.h"
+
 #include "cont.h"
 //cont standard- plata lunara, cont prem- plata la 2 luni- fctie virt
 // suprascriu depunerea alea alea cu comision
@@ -19,9 +21,9 @@ class cont_standard: public Cont{
 
 
 public:
-    [[nodiscard]] std::shared_ptr<Cont> clone() const override {
-        return std::make_shared <cont_standard>(*this);
-    }// eroare
+//    [[nodiscard]] std::shared_ptr<Cont> clone() const override {
+//        return std::make_shared <cont_standard>(*this);
+//    }// eroare
 
     explicit cont_standard(int taxa_,  float comision_ );
     virtual ~cont_standard();

@@ -16,7 +16,7 @@ public:
     [[nodiscard]] std::shared_ptr<Titular> clone() const override {
         return std::make_shared <pers_fizica>(*this);
     }
-
+    pers_fizica();
     explicit pers_fizica(std::string nume_, std::string prenume_, int varsta_, std::string cnp_);
     void afisare(std::ostream &os) const override;
     ~pers_fizica() override;

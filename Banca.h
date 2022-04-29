@@ -1,9 +1,11 @@
 #include "cont.h"
+#pragma once
 class Banca{
     std::string nume;
-    [[maybe_unused]] std::string sucursala;
+  std::string sucursala;
     static Banca* bank;
-    [[maybe_unused]] std::vector<std::shared_ptr<Cont>> conturi;
+     std::vector<std::shared_ptr<Cont>> conturi;
+    Banca(){};
 
 public:
 
@@ -11,7 +13,7 @@ public:
 
         std::cout<<"constructor init banca"<<" ";
     }
-    Banca(){};
+
 
     static Banca* getBank(){
         if(bank == nullptr){

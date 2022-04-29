@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <utility>
@@ -6,6 +7,8 @@
 #include "titular.h"
 #include "exceptii.h"
 #include "titular.h"
+#include "Pers_fizica.h"
+
 
 
 Titular::Titular(bool id) : id(id) {}

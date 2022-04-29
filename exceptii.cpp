@@ -9,3 +9,6 @@ eroare_destinatar::eroare_destinatar() noexcept : std::domain_error("Datele dest
 
 eroare_tranzactie::eroare_tranzactie() noexcept: std::domain_error("Suma este prea mica, tranzactoa nu poate fi relaizata."){}
 eroare_cont_curent::eroare_cont_curent() noexcept : std::domain_error("O peroana juridica nu poate avea cont curent."){}
+
+
+

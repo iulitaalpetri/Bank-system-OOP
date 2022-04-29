@@ -25,3 +25,4 @@ void pers_juridica::afisare(std::ostream &os) const {
 const std::string &pers_juridica::getnume_firma() const {}
 
 
+

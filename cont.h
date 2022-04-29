@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <utility>
@@ -24,11 +25,11 @@ protected:
 
     Cont(const Cont&) ;// pointer
     Cont& operator=(const Cont&) ;
-    virtual void afisare(std::ostream& os) const = 0;
+    virtual void afisare(std::ostream& os) const;
 
 
 public:
-    virtual Cont* clone () const=0;
+    virtual Cont* clone () ;
     Cont();
 
     Cont(int &suma, const std::string &moneda, const std::string &iban, Titular& titular_) : suma(suma),moneda(moneda), iban(iban), titular(titular_) {
@@ -70,12 +71,12 @@ public:
 
     // metode - 3
     // fctia 1
-    virtual void depunere(int sumadep, const std::string monedadep)= 0;
+    virtual void depunere(int sumadep, const std::string monedadep);
 
     // fctia 2
-    virtual void extragere(int sumaextr, const std::string monedaextr) =0 ;
+    virtual void extragere(int sumaextr, const std::string monedaextr)  ;
     // fctia 3
-    virtual void tranzactie(  Cont& other_cont, int sumatranz) =0 ;
+    virtual void tranzactie(  Cont& other_cont, int sumatranz)  ;
 
 
     virtual ~Cont() ;
