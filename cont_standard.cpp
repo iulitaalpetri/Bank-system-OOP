@@ -11,7 +11,7 @@
 
 
 cont_standard::cont_standard(int &suma_, std::string &moneda_, std::string &iban_, Titular &titular_,
-                             int &abonamnet_telefon_, int &taxa_, float &comision_) :Cont(int suma_,  std::string moneda_,  std::string iban_, Titular& titular_),
+                             int &abonamnet_telefon_, int &taxa_, float &comision_) :Cont(int suma_,  std::string moneda_,  std::string iban_, Titular& titular_),\
 taxa(taxa_), comision(comision_){
     if (suma < suma_min) throw eroare_suma_cont();
     std::cout<<"constr init cont_stand"<<std::endl;
