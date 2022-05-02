@@ -8,15 +8,22 @@
 
 class Titular{
 protected:
-    bool id;// 1 pt pers fizica, 0 pers juridica
-public:
-    Titular(bool id);
+    int id;// 1 pt pers fizica, 0 pers juridica
 
-protected:
+
+
     //Titular(const Titular&) = default;
-    Titular& operator=(const Titular&) = default;//op =
+
     virtual void afisare(std::ostream& os) const ;
+
+
 public:
+
+    //clonare
+    Titular(const Titular&) = default;
+    Titular & operator=(const Titular& t) = default;
+
+    Titular(int &id_);
     friend std::ostream &operator<<(std::ostream &os, const Titular &t);
     Titular();
 
@@ -29,7 +36,7 @@ public:
 //    virtual void verificare( );
 
 
-    virtual std::shared_ptr<Titular> clone() const;// pointer ca sa facem pt constr copiere direct copia poinerului la casa de baza
+    [[nodiscard]] virtual std::shared_ptr<Titular> clone() const ;// clonare
 
 };
 

@@ -1,4 +1,4 @@
-#pragma once
+
 #include <iostream>
 #include <string>
 #include <utility>
@@ -35,6 +35,8 @@ std::ostream &operator<<(std::ostream &os, const Cont &cont) {
 Cont::~Cont() {
     std::cout<<"destructor Cont= baza"<< std::endl;
 }
+
+
 
 
 

@@ -21,18 +21,21 @@ protected:
     Titular titular;
     std::map<std::pair<std::string, std::string>, double> curs;
 
+    //clonare
+    Cont(const Cont&) =default;
+    Cont & operator=(const Cont& c)= default ;// ce??
 
 
-    Cont(const Cont&) ;// pointer
-    Cont& operator=(const Cont&) ;
+
     virtual void afisare(std::ostream& os) const;
 
 
 public:
-    virtual Cont* clone () ;
+    //virtual Cont* clone () ;
     Cont();
 
-    Cont(int &suma, const std::string &moneda, const std::string &iban, Titular& titular_) : suma(suma),moneda(moneda), iban(iban), titular(titular_) {
+
+    Cont(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_) : suma(suma_),moneda(moneda_), iban(iban_), titular(titular_) {
         curs[{"lei", "euro"}] = 5;
         curs[{"euro", "lei"}]= 0.2;
         curs[{"lei", "lei"}]= 1;
@@ -81,6 +84,7 @@ public:
 
     virtual ~Cont() ;
 
+    [[nodiscard]] virtual std::shared_ptr<Cont> clone() const ;// clonare
 
 
 

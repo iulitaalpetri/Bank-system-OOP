@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <utility>
@@ -13,14 +14,13 @@ class pers_fizica:public Titular{
     std::string cnp;
 public:
 
-    [[nodiscard]] std::shared_ptr<Titular> clone() const override {
-        return std::make_shared <pers_fizica>(*this);
-    }
+    //clonare
+    [[nodiscard]] std::shared_ptr<Titular> clone() const override;
     pers_fizica();
-    explicit pers_fizica(std::string nume_, std::string prenume_, int varsta_, std::string cnp_);
+    pers_fizica(int &id_, std::string &nume_, std::string &prenume_, int &varsta_, std::string &cnp_);
     void afisare(std::ostream &os) const override;
     ~pers_fizica() override;
-//    virtual void verificare() override;// fac fctia verificare direct in cls der
+
 
     const std::string &getNume() const;
 

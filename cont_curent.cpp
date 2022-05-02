@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <string>
 #include <utility>
@@ -8,8 +7,8 @@
 #include "cont.h"
 #include "cont_curent.h"
 contcurent::contcurent() {}
-contcurent::contcurent(float abonament_telefon_, float utilitati_):
-        abonament_telefon(abonament_telefon_), utilitati(utilitati_){
+contcurent::contcurent(int &suma_, std::string &moneda_, std::string &iban_, Titular &titular_,float &abonament_telefon_, float &utilitati_) : Cont(int suma_,  std::string moneda_,  std::string iban_, Titular& titular_) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
+
     if(titular.isId()==0) throw eroare_cont_curent();
     else
     if(suma< suma_min) throw eroare_suma_cont();
@@ -78,3 +77,7 @@ void contcurent::depunere(int sumadep, const std::string monedadep) {
 
 }
 
+std::shared_ptr<Cont> contcurent::clone() const {
+    std::cout<<"Clonare_cont\n";
+    return std::make_shared<contcurent>(*this);// eroare
+}

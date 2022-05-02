@@ -9,11 +9,13 @@
 #include "cont.h"
 #include "cont_standard.h"
 
-cont_standard::cont_standard(int taxa_ ,   float comision_):
-        taxa(taxa_), comision(comision_)
-{
+
+cont_standard::cont_standard(int &suma_, std::string &moneda_, std::string &iban_, Titular &titular_,
+                             int &abonamnet_telefon_, int &taxa_, float &comision_) :Cont(int suma_,  std::string moneda_,  std::string iban_, Titular& titular_),
+taxa(taxa_), comision(comision_){
     if (suma < suma_min) throw eroare_suma_cont();
     std::cout<<"constr init cont_stand"<<std::endl;
+
 }
 cont_standard::~cont_standard() {} ;
 
@@ -66,7 +68,7 @@ void cont_standard::tranzactie(Cont &other_cont, int sumatranz) {
                   other_cont.getIban()       <<"."  << std::endl;}}
 
 
-
-
-//la tranzactii se cere comision
-
+std::shared_ptr<Cont> cont_standard::clone() const {
+    std::cout<<"Clonare_cont\n";
+    return std::make_shared<cont_standard>(*this);
+}

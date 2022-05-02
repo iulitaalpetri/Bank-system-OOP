@@ -25,7 +25,7 @@ public:
 //        return std::make_shared <cont_standard>(*this);
 //    }// eroare
 
-    explicit cont_standard(int taxa_,  float comision_ );
+    explicit cont_standard(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_, float &abonament_telefon_,int &taxa_,  float &comision_ );
     virtual ~cont_standard();
     void afisare(std::ostream &os) const override ;
 
@@ -35,6 +35,8 @@ public:
     void depunere(int sumadep, const std::string monedadep) override;
     void extragere(int sumaextr, const std::string monedaextr)  override;
     void tranzactie(Cont& other_cont, int sumatranz ) override;
+    [[nodiscard]] std::shared_ptr<Cont> clone() const override;
+
 
 
 

@@ -11,13 +11,12 @@
 
 
 
-Titular::Titular(bool id) : id(id) {}
 
 
 Titular::Titular() {
     std::cout<<"constr init titular-baza"<<std::endl;
 }
-
+Titular::Titular(int &id_) : id(id_){}
 //void Titular::verificare() {}
 
 void Titular::afisare(std::ostream &os) const {
@@ -34,10 +33,9 @@ bool Titular::isId() const {
     return id;
 }
 
-//Titular &Titular::operator=(const Titular &) {
-//
-//}
-//de apelat in main
+
+
+
 
 
 

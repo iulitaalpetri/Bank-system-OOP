@@ -9,7 +9,7 @@ class Banca{
 
 public:
 
-    Banca(std::string  nume_, std::string  sucursala_, std::vector <std::shared_ptr <Cont>> conturi_ ): nume(std::move(nume_)), sucursala(std::move(sucursala_)), conturi(std::move (conturi_)){
+    Banca(std::string  nume_, std::string  sucursala_, std::vector<std::shared_ptr<Cont>> conturi_): nume(std::move(nume_)), sucursala(std::move(sucursala_)),conturi(std::move(conturi_)) {
 
         std::cout<<"constructor init banca"<<" ";
     }
@@ -22,6 +22,10 @@ public:
         return bank;
     }// daca n am o banca nu pot face nimic
 
+    ///Swap
+    friend void swap(Banca & b1, Banca &b2){
+        std::swap(b1.conturi, b2.conturi);
+    };
 
     friend std::ostream& operator<<(std::ostream& os, const Banca& ob);//afisare
     //friend istream& operator>>(istream& os, const Banca& ob);//citire
