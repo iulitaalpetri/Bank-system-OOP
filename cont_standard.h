@@ -25,7 +25,7 @@ public:
 //        return std::make_shared <cont_standard>(*this);
 //    }// eroare
 
-    explicit cont_standard(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_, float &abonament_telefon_,int &taxa_,  float &comision_ );
+    explicit cont_standard(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_, int &taxa_,  float &comision_ );
     virtual ~cont_standard();
     void afisare(std::ostream &os) const override ;
 

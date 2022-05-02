@@ -7,7 +7,7 @@
 #include "cont.h"
 #include "cont_curent.h"
 contcurent::contcurent() {}
-contcurent::contcurent(int &suma_, std::string &moneda_, std::string &iban_, Titular &titular_,float &abonament_telefon_, float &utilitati_) : Cont(int suma_,  std::string moneda_,  std::string iban_, Titular& titular_) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
+contcurent::contcurent(int &suma_, std::string &moneda_, std::string &iban_, Titular &titular_,float &abonament_telefon_, float &utilitati_) : Cont( suma_,  moneda_,  iban_, titular_) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
 
     if(titular.isId()==0) throw eroare_cont_curent();
     else

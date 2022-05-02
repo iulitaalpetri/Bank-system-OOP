@@ -7,8 +7,8 @@
 #include "Pers_fizica.h"//fctie virtuala ca nu poate avea cont curent
 #include "pers_juridica.h"
 
-pers_juridica::pers_juridica(int &id_, std::string &nume_reprezentant_, std::string &prenume_reprezentant_,
-                             std::string &nume_firma_):
+pers_juridica::pers_juridica(int id_, std::string nume_reprezentant_, std::string prenume_reprezentant_,
+                             std::string nume_firma_):
 
         Titular( id_) , nume_reprezentant(nume_reprezentant_), prenume_reprezentant(prenume_reprezentant_), nume_firma(nume_firma_){
     std::cout<<"constr init pers_jur- derivata"<< std::endl;

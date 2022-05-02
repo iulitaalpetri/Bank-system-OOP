@@ -1,7 +1,7 @@
 #include "cont_premium.h"
 
 
-cont_premium::cont_premium(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_int, int &taxa_init_):Cont(int suma_,  std::string moneda_,  std::string iban_, Titular& titular_), taxa_init(taxa_init_) {
+cont_premium::cont_premium(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_, int &taxa_init_):Cont( suma_,  moneda_,  iban_,  titular_), taxa_init(taxa_init_) {
     if(suma< suma_min) throw eroare_suma_cont();
     else suma= suma- taxa_init_;
 
