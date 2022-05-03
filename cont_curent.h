@@ -25,10 +25,11 @@ class contcurent : public Cont{
 public:
     //Cont *clone() const override ;
     contcurent();
-    contcurent(int &suma_, std::string &moneda_,  std::string &iban_, Titular& titular_, float &abonament_telefon_, float &utilitati_);
+    contcurent(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular>& titular_, float abonament_telefon_, float utilitati_);
 
 
     virtual ~contcurent() ;
+    bool ver_suma();
 
     void afisare(std::ostream &os) const override ;
 

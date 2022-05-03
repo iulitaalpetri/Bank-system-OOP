@@ -16,7 +16,7 @@
 Titular::Titular() {
     std::cout<<"constr init titular-baza"<<std::endl;
 }
-Titular::Titular(int &id_) : id(id_){}
+Titular::Titular(int id_) : id(id_){}
 //void Titular::verificare() {}
 
 void Titular::afisare(std::ostream &os) const {

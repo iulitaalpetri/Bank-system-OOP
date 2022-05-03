@@ -35,7 +35,7 @@ public:
     Cont();
 
 
-    Cont(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_) : suma(suma_),moneda(moneda_), iban(iban_), titular(titular_) {
+    Cont(int suma_, const std::string &moneda_,  const std::string &iban_, const std::shared_ptr<Titular> &titular_) : suma(suma_),moneda(moneda_), iban(iban_), titular(titular_) {
         curs[{"lei", "euro"}] = 5;
         curs[{"euro", "lei"}]= 0.2;
         curs[{"lei", "lei"}]= 1;

@@ -17,10 +17,10 @@ public:
     //clonare
     [[nodiscard]] std::shared_ptr<Titular> clone() const override;
     pers_fizica();
-    pers_fizica(int &id_, std::string &nume_, std::string &prenume_, int &varsta_, std::string &cnp_);
+    pers_fizica(const int &id_, const std::string &nume_, const std::string &prenume_,  int varsta_, const std::string &cnp_);
     void afisare(std::ostream &os) const override;
     ~pers_fizica() override;
-
+    bool verificare_varsta();
 
     const std::string &getNume() const;
 

@@ -21,11 +21,9 @@ class cont_standard: public Cont{
 
 
 public:
-//    [[nodiscard]] std::shared_ptr<Cont> clone() const override {
-//        return std::make_shared <cont_standard>(*this);
-//    }// eroare
 
-    explicit cont_standard(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_, int &taxa_,  float &comision_ );
+
+    explicit cont_standard(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular>& titular_, int taxa_,  float comision_ );
     virtual ~cont_standard();
     void afisare(std::ostream &os) const override ;
 

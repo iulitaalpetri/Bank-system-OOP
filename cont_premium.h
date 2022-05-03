@@ -18,7 +18,7 @@ class cont_premium:public Cont{
 
 public:
     cont_premium();
-    cont_premium(int &suma_,  std::string &moneda_,  std::string &iban_, Titular& titular_,int &taxa_init_);
+    cont_premium(int suma_,  const std::string &moneda_,const  std::string &iban_,const std::shared_ptr< Titular> &titular_,int taxa_init_);
     virtual ~cont_premium()= default;
     friend std::ostream& operator<<(std::ostream& os, const cont_premium& c);//afisare
     void depunere(int sumadep, const std::string monedadep) override;

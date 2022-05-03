@@ -21,11 +21,17 @@ public:
 
     //clonare
     Titular(const Titular&) = default;
+
     Titular & operator=(const Titular& t) = default;
 
-    Titular(int &id_);
+    Titular(int  id_);
     friend std::ostream &operator<<(std::ostream &os, const Titular &t);
     Titular();
+
+    //constr copiere
+    Titular(const std::shared_ptr<Titular> &other) {
+        id= other->id;
+    }
 
     //Titular();
     virtual ~Titular()= default;

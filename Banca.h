@@ -37,11 +37,7 @@ public:
         for(const auto& cont : other.conturi)
             conturi.push_back(static_cast<const std::shared_ptr<Cont>>(cont->clone()));
     }
-    friend void swap(Banca& b1, Banca& b2) {
-        using std::swap;
-        swap(b1.conturi, b2.conturi);
 
-    }
 
     Banca& operator=(const Banca& other) {
         auto copie{other};

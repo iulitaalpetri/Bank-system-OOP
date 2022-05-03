@@ -7,12 +7,17 @@
 #include "Pers_fizica.h"
 
 
-pers_fizica::pers_fizica(int &id_, std::string &nume_, std::string &prenume_, int &varsta_, std::string &cnp_)
+pers_fizica::pers_fizica(const int &id_, const std::string &nume_, const std::string &prenume_,  int varsta_, const std::string  &cnp_)
         : Titular(id_), nume(nume_), prenume(prenume_), varsta(varsta_), cnp(cnp_) {
 
-    if (varsta_ < 18) throw eroare_varsta();
+//    if (varsta_ < 18) throw eroare_varsta();
 
     std::cout << "constr init pers fizica- derivata" << std::endl;
+}
+
+bool pers_fizica::verificare_varsta() {
+    if(varsta< 18) return false;
+    return true;
 }
 
 
