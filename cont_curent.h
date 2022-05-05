@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 
 #include <string>
@@ -9,7 +8,7 @@
 #include <ctime>
 #include <tuple>
 
-#include "cont.h"
+
 
 class contcurent : public Cont{
     std::vector< std::tuple<std::string , std::string, float> > istoric_tranzactii;
@@ -23,23 +22,23 @@ class contcurent : public Cont{
 
 
 public:
-    //Cont *clone() const override ;
-    contcurent();
+    //constr
     contcurent(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular>& titular_, float abonament_telefon_, float utilitati_);
 
-
+    //destr
     virtual ~contcurent() ;
-    bool ver_suma();
 
+    //afisare
     void afisare(std::ostream &os) const override ;
 
     //fctie incarcare cartela- odata pe luna, se apeleaza pe 1.
     void plata_abonament();
     void plata_utilitati();
 
-    void extragere(int sumaextr, const std::string monedaextr) override ;
-    void depunere(int sumadep, const std::string monedadep)  override;
-    [[nodiscard]] std::shared_ptr<Cont> clone() const override;
+    void extragere(int sumaextr, std::string monedaextr) override ;
+    void depunere(int sumadep, std::string monedadep)  override;
+    //clonare
+    //[[nodiscard]] std::shared_ptr<Cont> clone() const override;
 
 
 

@@ -1,44 +1,45 @@
 
-#include <iostream>
-#include <string>
-#include <utility>
-#include <vector>
-#include <map>
+
 #include "cont.h"
-#include "exceptii.h"
-#include "titular.h"
 
+#include <utility>
+#include <iostream>
 
-Cont::Cont() {
-
-};
-int Cont::getSuma() const {
-    return suma;
+Cont::Cont(int suma_, std::string moneda_,  std::string iban_, std::shared_ptr<Titular> titular_) : suma(suma_),moneda(std::move(moneda_)), iban(std::move(iban_)), titular(std::move(titular_)) {
+    curs[{"lei", "euro"}] = 5;
+    curs[{"euro", "lei"}]= 0.2;
+    curs[{"lei", "lei"}]= 1;
+    curs[{"euro", "euro"}] = 1;
+    std::cout<<"constr cont- baza"<<std::endl;
 }
-const std::string &Cont::getMoneda() const {
-    return moneda;
+
+Cont::~Cont() {
+    std::cout<<"destr - Cont_ baza"<< std::endl;
 }
+
+
 void Cont::afisare(std::ostream &os) const {
     auto& Cont= *this;
-    os<<"suma:"<<Cont.suma<<" , moneda:"<<Cont.moneda<<" ,iban"<<Cont.iban<< " ,id titular"<<Cont.titular.isId();
-}
-
-
-const std::string &Cont::getIban() const {
-    return iban;
+    os<<"suma:"<<Cont.suma<<" , moneda:"<<Cont.moneda<<" ,iban"<<Cont.iban<< " ,id titular"<<Cont.titular->isId();
 }
 
 std::ostream &operator<<(std::ostream &os, const Cont &cont) {
     cont.afisare(os);
     return os;
 }
-Cont::~Cont() {
-    std::cout<<"destructor Cont= baza"<< std::endl;
+
+int Cont::getSuma() {
+    return suma;
 }
 
+const std::string &Cont::getMoneda() const {
+    return  moneda;
+}
 
+const std::string &Cont::getIban() const {
+    return iban;
+}
 
-
-
-
-
+void Cont::setSuma(int x) {
+    Cont::suma = x;
+}

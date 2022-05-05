@@ -59,7 +59,7 @@ void cont_standard::extragere(int sumaextr, const std::string monedaextr) {
 
 void cont_standard::tranzactie(Cont &other_cont, int sumatranz) {
 
-    other_cont.getsuma()= other_cont.getsuma()+ sumatranz * curs[{moneda, other_cont.getmoneda()}] ;
+    other_cont.setSuma(other_cont.getSuma()+ sumatranz * curs[{moneda, other_cont.getMoneda()}]) ;
     if(sumatranz< 100) throw eroare_tranzactie();
     else if(suma< sumatranz) throw eroare_fonduri_insuficiente();
     else {

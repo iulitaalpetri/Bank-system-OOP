@@ -1,92 +1,50 @@
-#pragma once
-#include <iostream>
 #include <string>
-#include <utility>
-#include <vector>
 #include <map>
-#include <bits/stdc++.h>
-#include <ctime>
-#include "exceptii.h"
 #include "titular.h"
-#include "pers_juridica.h"
 
 
 class Cont {
 protected:
     int suma;
-
-
     std::string moneda;
     std::string iban;
-    Titular titular;
+    std::shared_ptr<Titular> titular;
     std::map<std::pair<std::string, std::string>, double> curs;
 
     //clonare
     Cont(const Cont&) =default;
-    Cont & operator=(const Cont& c)= default ;// ce??
+    Cont & operator=(const Cont& c)= default ;
 
+public:
 
+    //constr
+    Cont(int suma_, std::string moneda_,  std::string iban_, std::shared_ptr<Titular> titular_);
+
+    //destr
+    virtual ~Cont() ;
+    //setter
+    void setSuma(int suma);
 
     virtual void afisare(std::ostream& os) const;
 
-
-public:
-    //virtual Cont* clone () ;
-    Cont();
-
-
-    Cont(int suma_, const std::string &moneda_,  const std::string &iban_, const std::shared_ptr<Titular> &titular_) : suma(suma_),moneda(moneda_), iban(iban_), titular(titular_) {
-        curs[{"lei", "euro"}] = 5;
-        curs[{"euro", "lei"}]= 0.2;
-        curs[{"lei", "lei"}]= 1;
-        curs[{"euro", "euro"}] = 1;
-    }
-
-    const std::string &getIban() const;
-
-
-
-    int getSuma() const;
-
-    const std::string &getMoneda() const;
-
-
-
-    // supraincarcarea operator << si >>
-
-    //virtual void afisare(std::ostream &os) const = 0;
     friend std::ostream &operator<<(std::ostream &os, const Cont &t);
 
+//getters
+    const std::string &getIban() const;
 
+    int getSuma() ;
 
-
-
-
-
-    //getter suma
-    int& getsuma(){return suma;}
-
-
-
-    // getter moneda
-    std::string& getmoneda(){return moneda;}
-
+    [[nodiscard]] const std::string &getMoneda() const;
 
     // metode - 3
     // fctia 1
-    virtual void depunere(int sumadep, const std::string monedadep);
+    virtual void depunere(int sumadep, std::string monedadep)= 0;
 
     // fctia 2
-    virtual void extragere(int sumaextr, const std::string monedaextr)  ;
+    virtual void extragere(int sumaextr,  std::string monedaextr)=0   ;
     // fctia 3
-    virtual void tranzactie(  Cont& other_cont, int sumatranz)  ;
+    virtual void tranzactie(  Cont& other_cont, int sumatranz) = 0 ;
 
 
-    virtual ~Cont() ;
-
-    [[nodiscard]] virtual std::shared_ptr<Cont> clone() const ;// clonare
-
-
-
+    [[nodiscard]] virtual std::shared_ptr<Cont> clone() const= 0 ;// ptr
 };
-

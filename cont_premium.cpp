@@ -7,7 +7,7 @@ cont_premium::cont_premium(int suma_, const  std::string &moneda_, const  std::s
 
 }
 
-cont_premium::cont_premium() {}
+
 
 
 void cont_premium::depunere(int sumadep, const std::string monedadep) {
@@ -27,7 +27,7 @@ void cont_premium::extragere(int sumaextr, const std::string monedaextr) {
 void cont_premium::tranzactie(Cont &other_cont, int sumatranz) {
     {
 
-        other_cont.getsuma()= other_cont.getsuma()+ sumatranz * curs[{moneda, other_cont.getmoneda()}] ;
+        other_cont.setSuma( other_cont.getSuma()+ sumatranz * curs[{moneda, other_cont.getMoneda()}] );
         if(sumatranz< 100) throw eroare_tranzactie();
         else if(suma< sumatranz) throw eroare_fonduri_insuficiente();
         else {
@@ -35,6 +35,13 @@ void cont_premium::tranzactie(Cont &other_cont, int sumatranz) {
             std::cout << "Tranzactie realizata cu succes. Ati trimis" << sumatranz << "lei catre contul cu iban:" <<
                       other_cont.getIban()<<"."  << std::endl;}}}
 
+
+void cont_premium::afisare(std::ostream &os) const {
+
+    Cont::afisare(os);
+    os << "taxa initiala: "<<taxa_init<<std::endl;
+
+}
 
 
 

@@ -17,7 +17,13 @@ public:
     //clonare
     [[nodiscard]] std::shared_ptr<Titular> clone() const override;
     pers_fizica();
-    pers_fizica(const int &id_, const std::string &nume_, const std::string &prenume_,  int varsta_, const std::string &cnp_);
+    pers_fizica(const int &id_, const std::string &nume_, const std::string &prenume_,  int varsta_, const std::string  &cnp_)
+            : Titular(id_), nume(nume_), prenume(prenume_), varsta(varsta_), cnp(cnp_) {
+
+//    if (varsta_ < 18) throw eroare_varsta();
+
+        std::cout << "constr init pers fizica- derivata" << std::endl;
+    }
     void afisare(std::ostream &os) const override;
     ~pers_fizica() override;
     bool verificare_varsta();

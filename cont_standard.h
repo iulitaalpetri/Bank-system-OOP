@@ -1,4 +1,4 @@
-#pragma once
+
 #include <iostream>
 #include <string>
 #include <utility>
@@ -9,8 +9,7 @@
 #include "exceptii.h"
 
 #include "cont.h"
-//cont standard- plata lunara, cont prem- plata la 2 luni- fctie virt
-// suprascriu depunerea alea alea cu comision
+
 class cont_standard: public Cont{
 
     int taxa;
@@ -29,7 +28,7 @@ public:
 
     void data_plata();
     void efectuare_plata(int luna);
-    //void depunere() override;
+
     void depunere(int sumadep, const std::string monedadep) override;
     void extragere(int sumaextr, const std::string monedaextr)  override;
     void tranzactie(Cont& other_cont, int sumatranz ) override;

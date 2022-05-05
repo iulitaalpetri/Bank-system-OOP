@@ -1,27 +1,18 @@
-#pragma once
 #include <iostream>
-#include <string>
-#include <utility>
-#include <vector>
-#include <map>
 #include "titular.h"
-#include "exceptii.h"
-#include "titular.h"
-#include "Pers_fizica.h"
+#include "pers_juridica.h" 
 
-
-
-
-
-Titular::Titular() {
-    std::cout<<"constr init titular-baza"<<std::endl;
+Titular::Titular() = default;
+Titular::Titular(bool id_): id(id_) {
+    std::cout<<"constr init Titular- cls baza"<<std::endl;
 }
-Titular::Titular(int id_) : id(id_){}
-//void Titular::verificare() {}
+Titular::~Titular() {
+    std::cout<<"destructor Titular - cls de baza"<< std::endl;
+}
 
 void Titular::afisare(std::ostream &os) const {
     auto& Titular = *this;
-    os << "x: " << Titular.id;
+    os << "x: " << Titular.id<<std::endl;
 }
 
 std::ostream &operator<<(std::ostream &os, const Titular &t) {
@@ -32,11 +23,4 @@ std::ostream &operator<<(std::ostream &os, const Titular &t) {
 bool Titular::isId() const {
     return id;
 }
-
-
-
-
-
-
-
 
