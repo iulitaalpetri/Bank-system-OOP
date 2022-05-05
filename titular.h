@@ -2,8 +2,7 @@
 
 #include <iosfwd>
 #include <memory>
-#include "pers_juridica.h"
-#include "Pers_fizica.h"
+
 
 class Titular{
 protected:

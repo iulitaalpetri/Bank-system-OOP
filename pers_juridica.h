@@ -1,10 +1,11 @@
 #pragma once
+#include "titular.h"
 #include <iostream>
 #include <string>
 #include <utility>
 #include <vector>
 #include <map>
-#include "titular.h"
+
 //nu poate face cont curent
 class pers_juridica:public Titular{
     std::string nume_reprezentant;

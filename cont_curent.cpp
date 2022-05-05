@@ -60,8 +60,8 @@ void contcurent::depunere(int sumadep, const std::string monedadep) {
     istoric_tranzactii.push_back(std::make_tuple(date, "Depunere numerar", sumadep));}
 
 
-//std::shared_ptr<Cont> contcurent::clone() const{
-//
-//    return std::make_shared<contcurent>(*this);
-//
-//} //eroare
+std::shared_ptr<Cont> contcurent::clone() const{
+
+    return std::make_shared<contcurent>(*this);
+
+} //eroare

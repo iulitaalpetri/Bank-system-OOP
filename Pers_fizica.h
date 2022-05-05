@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 #include "titular.h"
-#include "titular.cpp"
+
 //de adaugat pointeri
 class pers_fizica:public Titular{
     std::string nume;

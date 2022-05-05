@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 
 #include <string>
@@ -38,7 +39,7 @@ public:
     void extragere(int sumaextr, std::string monedaextr) override ;
     void depunere(int sumadep, std::string monedadep)  override;
     //clonare
-    //[[nodiscard]] std::shared_ptr<Cont> clone() const override;
+    [[nodiscard]] std::shared_ptr<Cont> clone() const override;
 
 
 

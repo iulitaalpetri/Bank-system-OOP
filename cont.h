@@ -1,6 +1,9 @@
+#pragma once
 #include <string>
 #include <map>
+
 #include "titular.h"
+
 
 
 class Cont {
