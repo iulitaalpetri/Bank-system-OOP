@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <bits/stdc++.h>
+
 #include "cont.h"
 #include "cont_curent.h"
 #include "exceptii.h"
