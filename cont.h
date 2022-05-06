@@ -46,7 +46,7 @@ public:
     // fctia 2
     virtual void extragere(int sumaextr,  std::string monedaextr)=0   ;
     // fctia 3
-    virtual void tranzactie(  Cont& other_cont, int sumatranz) = 0 ;
+    virtual void tranzactie( Cont& other_cont, int sumatranz) = 0 ;
 
 
     [[nodiscard]] virtual std::shared_ptr<Cont> clone() const= 0 ;// ptr

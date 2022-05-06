@@ -1,79 +1,102 @@
-
 #include <iostream>
-#include <string>
-#include <utility>
-#include <vector>
-#include <map>
 #include "titular.h"
-using namespace std;
-
+#include "cont.h"
+#include "pers_juridica.h"
+#include "Pers_fizica.h"
+#include "cont_curent.h"
+#include "cont_premium.h"
+#include "exceptii.h"
+#include "Banca.h"
+#include "cont_standard.h"
 
 int main()
 {
-    std::vector<std::shared_ptr<Cont>> vect_cont;
-    std::vector<std::shared_ptr<Cont>> vect1_cont;
-////    Banca b1{"Nume_Banca1", "Bucuresti", vect_cont};
-////    Banca b2{"Nume_Banca2", "Constanta", vect1_cont};
-////    swap(b1, b2);- la final de tot
-//
-//    try {
 
-        shared_ptr<Titular> p1(new pers_fizica(0, "Alpetri", "Iulita", 20, "7652835689"));
 
- //       pers_fizica* p_f_1= dynamic_cast<pers_fizica*>(p);
-//        if(p_f_1->verificare_varsta()== false) throw eroare_varsta();
-//        else{
-         //shared_ptr<Cont> c1(new contcurent(300, "lei", "64328", p1, 30, 20));
-//            contcurent* c_1= dynamic_cast<contcurent*>(*c1);
-//            if(c_1-> ver_suma()== false) throw eroare_cont_curent();
-//            else vect_cont.push_back(c1);
+
+    std::shared_ptr<Titular> pf1 = std::make_shared<pers_fizica>(0, "Alpetri", "Iulita", 20, "7652835689");
+    std::shared_ptr<Titular> pf2 = std::make_shared<pers_fizica>(0, "Ureche", "Mara", 23, "53453435");
+    std::shared_ptr<Titular> pf3 = std::make_shared<pers_fizica>(0, "Ioan", "Georgescu", 16, "568976567");
+    std::shared_ptr<Titular> pj= std::make_shared<pers_juridica>(1, "Alin", "Popescu", "Nume_firma");
+
+    try{
+    if(dynamic_cast<pers_fizica&>(*pf1).verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
+    else {
+        dynamic_cast<pers_fizica&>(*pf1).afisare(std::cout);
+        if  (pf1->isId()) throw(eroare_cont_curent{"Contul curent este valabil doar pentru persoane fizice.\n"});
+        else{
+        std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 30, 20 );
+        dynamic_cast<contcurent&>(*c_c).afisare(std::cout);
+            dynamic_cast<contcurent&>(*c_c).plata_abonament();
+            dynamic_cast<contcurent&>(*c_c).extragere(20, "lei");
+            dynamic_cast<contcurent&>(*c_c).depunere(100, "euro");
+            dynamic_cast<contcurent&>(*c_c).afisare(std::cout);
+            dynamic_cast<contcurent&>(*c_c).afisare_istoric();
+
+
+        }
+
+    }
+    }
+    catch (std::exception& err) {
+        std::cout << err.what() << "\n";
+    }
+
+    try{
+        if(dynamic_cast<pers_fizica&>(*pf2).verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
+        else{
+            dynamic_cast<pers_fizica&>(*pf2).afisare(std::cout);
+
+                std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2, 10, 0.05);
+            dynamic_cast<cont_standard&>(*c_s).afisare(std::cout);
+
+            dynamic_cast<cont_standard&>(*c_s).efectuare_plata();
+            dynamic_cast<cont_standard&>(*c_s).afisare(std::cout);
+            dynamic_cast<cont_standard&>(*c_s).extragere(10, "euro");
+            dynamic_cast<cont_standard&>(*c_s).depunere(30, "lei");
+            dynamic_cast<cont_standard&>(*c_s).tranzactie(dynamic_cast<Cont&>(*c_s), 50);
+
+
+
+        }
+
+    }
+    catch (std::exception& err) {
+        std::cout << err.what() << "\n";
+    }
+
+    try {
+        if (dynamic_cast<pers_fizica &>(*pf3).verificare_varsta() == 0)
+            throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
+    }catch (std::exception& err) {
+        std::cout << err.what() << "\n";
+    }
+    try {
+        std::shared_ptr<Cont> c_p = std::make_shared<cont_premium>( 700, "euro", "756834",pj, 50    );
+        dynamic_cast<cont_premium &>(*c_p).afisare(std::cout);
+        dynamic_cast<cont_premium &>(*c_p).extragere(900, "euro");
+        dynamic_cast<cont_premium &>(*c_p).depunere(20, "lei");
+        dynamic_cast<cont_premium &>(*c_p).tranzactie(dynamic_cast<Cont &>(*c_p), 50);
+
+
+    }catch (std::exception& err) {
+        std::cout << err.what() << "\n";
+    }
+    //adauga direct in try
+//    std::vector<std::shared_ptr<Cont&>> vect_cont;
+//    std::vector<std::shared_ptr<Cont&>> vect_cont1;
 //
-//            c_1->plata_utilitati();
-//            c_1->plata_abonament();
-//            std::cout<<c_1;
-//            c_1->depunere(78, "lei");
-//            c_1->extragere(90, "euro");
 //
-////            cout<<"Istoric tranz:"<<std::endl;
-////            for (vector<std::string, std::string, float> :: it v=  )
-////                for (unordered_map<int, int> :: iterator v=tuplu.begin(); v!= tuplu.end(); v++){
-////                    g<<( v -> first) <<" "<< (v -> second)<<" ";}- afisat istoric tranzactii
+//    vect_cont.push_back(*c_p);
+//        vect_cont.push_back(dynamic_cast<Cont &>(*c_c));
 //
-//        }}catch(std::domain_error &e){
-//        std::cout << e.what() << "\n";
-//    };
-//
-//
-//
-//
-//
-//
-//    shared_ptr<Titular> p_f_2(new pers_fizica(0, "Ureche", "Mara", 16, "5739"));
-//        // se puin amandoua in try si daca am eroare, atunci nu fac cont
-//        std::shared_ptr<Titular> p_j_1 = std::make_shared<pers_juridica>(1, "Popescu", "Ion", "Nume_firma");
-//        std::shared_ptr<Titular> p_j_2 = std::make_shared<pers_juridica>(1, "Georgescu", "Alin", "Nume_firma_1");
-//        // constr copiere pt titular titular(shared_ptr)
-//
-//
-//
-//
-//
-//
-//        std::shared_ptr<Cont> c_pr(new cont_premium(400, "euro", "756834", t_j, 50));
-//
-//
-//        std::shared_ptr<Cont> c_st(new cont_standard(400, "euro", "756834", t1, 10, 2));
-//        std::shared_ptr<Cont> c_s(new cont_standard(400, "euro", "756834", t, 10, 2));
-//
-//
-//        std::vector<std::shared_ptr<Cont>> vect_cont;
-//        vect_cont.push_back(c_curent);
-//        vect_cont.push_back(c_pr);
-//        vect_cont.push_back(c_st);
-//        std::vector<std::shared_ptr<Cont>> vect1_cont;
-//        vect1_cont.push_back(c_st1);
-//
-//
+//        vect1_cont.push_back(dynamic_cast<Cont &>(*c_s));
+//        Banca b1{"Nume_Banca1", "Bucuresti", vect_cont};
+//    Banca b2{"Nume_Banca2", "Constanta", vect1_cont};
+//    //swap(b1, b2);
+
+
+
 
 
 

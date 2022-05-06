@@ -20,7 +20,7 @@ Cont::~Cont() {
 
 void Cont::afisare(std::ostream &os) const {
     auto& Cont= *this;
-    os<<"suma:"<<Cont.suma<<" , moneda:"<<Cont.moneda<<" ,iban"<<Cont.iban<< " ,id titular"<<Cont.titular->isId();
+    os<<"Suma:"<<Cont.suma<<" , moneda:"<<Cont.moneda<<" ,iban: "<<Cont.iban;
 }
 
 std::ostream &operator<<(std::ostream &os, const Cont &cont) {

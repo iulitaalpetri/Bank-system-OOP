@@ -38,8 +38,18 @@ public:
 
     void extragere(int sumaextr, std::string monedaextr) override ;
     void depunere(int sumadep, std::string monedadep)  override;
+    //nefolosita
+    void tranzactie(Cont& other_cont, int sumatranz) override;
     //clonare
     [[nodiscard]] std::shared_ptr<Cont> clone() const override;
+    void afisare_istoric();
+
+//        list<Avocat>::iterator i; ///Creez un iterator
+//        cout << "---------------------------------------------------------------\n";
+//        for (i = barou.begin(); i != barou.end(); ++i) { ///De la inceputul listei pana la final, parcurg si afisez continutul iteratorului
+//            cout << (*i);
+//        }
+
 
 
 

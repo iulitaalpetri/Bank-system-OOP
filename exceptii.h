@@ -1,43 +1,46 @@
 #pragma once
 #include <iostream>
 #include <exception>
+#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
 #include <map>
-
-
 #include <stdexcept>
+#include <iostream>
 
-class eroare_varsta : public std::domain_error{
+class erori : public std::runtime_error {
 public:
-    eroare_varsta() noexcept;
+    explicit erori(const std::string &arg);
 };
 
-class eroare_suma_cont : public std::domain_error{
+class eroare_varsta : public erori {
 public:
-    eroare_suma_cont()noexcept;
-};
-
-class eroare_cont_curent : public std::domain_error{
-public:
-    eroare_cont_curent()noexcept;
+    explicit eroare_varsta(const std::string &arg);
 };
 
 
-class eroare_fonduri_insuficiente : public std::domain_error{
+
+class eroare_suma_cont : public erori{
 public:
-    eroare_fonduri_insuficiente() noexcept;
-};
-class eroare_tranzactie : public std::domain_error{
-public:
-    eroare_tranzactie() noexcept;
+    explicit eroare_suma_cont(const std::string &arg);
 };
 
-class eroare_destinatar : public std::domain_error{
+class eroare_cont_curent : public erori{
 public:
-    eroare_destinatar() noexcept;
+    explicit eroare_cont_curent(const std::string &arg);
 };
+
+
+class eroare_fonduri_insuficiente : public erori{
+public:
+    explicit eroare_fonduri_insuficiente( const std::string &arg) ;
+};
+class eroare_tranzactie : public erori{
+public:
+    explicit eroare_tranzactie(const std::string &arg) ;
+};
+
 
 
 
