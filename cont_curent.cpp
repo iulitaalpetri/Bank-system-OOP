@@ -45,7 +45,7 @@ void contcurent::plata_abonament() {
 
 }
 
-void contcurent::plata_utilitati() {
+[[maybe_unused]] void contcurent::plata_utilitati() {
     int zi = local_time->tm_mday;
     if(zi == 15){
         std::cout<<"plata utilitati\n";

@@ -4,7 +4,6 @@
 #include <utility>
 #include <vector>
 #include <map>
-#include <bits/stdc++.h>
 #include <ctime>
 #include "exceptii.h"
 

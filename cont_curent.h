@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 #include <map>
-#include <bits/stdc++.h>
+
 #include <ctime>
 #include <tuple>
 
@@ -34,7 +34,8 @@ public:
 
     //fctie incarcare cartela- odata pe luna, se apeleaza pe 1.
     void plata_abonament();
-    void plata_utilitati();
+
+    [[maybe_unused]] void plata_utilitati();
 
     void extragere(int sumaextr, std::string monedaextr) override ;
     void depunere(int sumadep, std::string monedadep)  override;
