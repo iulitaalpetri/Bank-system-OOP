@@ -19,10 +19,10 @@ void pers_juridica::afisare(std::ostream &os) const {
     Titular::afisare(os);
     os <<"nume reprezentant:"<< nume_reprezentant<<", prenume reprezentant:"<<prenume_reprezentant<<", nume firma:"<<nume_firma<< "\n";
 }
-
-[[maybe_unused]] const std::string &pers_juridica::getnume_firma() const {
-    return nume_firma;
-}
+//
+//[[maybe_unused]] const std::string &pers_juridica::getnume_firma() const {
+//    return nume_firma;
+//}
 
 std::shared_ptr<Titular> pers_juridica::clone()const {
     std::cout<<"Clonare_titular\n";

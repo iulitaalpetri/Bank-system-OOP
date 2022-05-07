@@ -20,7 +20,7 @@ public:
     void afisare(std::ostream &os) const override;
 
 
-    [[maybe_unused]] const std::string &getnume_firma() const;
+    //[[maybe_unused]] const std::string &getnume_firma() const;
     //std::unique_ptr<Titular> clone() const override;// copiere
 
 };

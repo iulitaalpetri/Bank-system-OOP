@@ -14,10 +14,10 @@ std::ostream& operator<<(std::ostream& os, const Banca& ob){
     conturi.emplace_back(cont.clone());
 }
 
-[[maybe_unused]] Banca::Banca(const Banca &other):nume(other.nume), sucursala(other.sucursala) {
-
-    for(const auto& cont : other.conturi)
-        conturi.push_back(static_cast<const std::shared_ptr<Cont>>(cont->clone()));
+[[maybe_unused]] Banca::Banca(const Banca &other):nume(other.nume), sucursala(other.sucursala), conturi(other.conturi) {
+//    conturi.push_back(static_cast<const std::shared_ptr<Cont>>(cont->clone()));
+//    for(const auto& cont : other.conturi)
+//        conturi.push_back(static_cast<const std::shared_ptr<Cont>>(cont->clone()));
 }
 
 Banca &Banca::operator=(const Banca &other) {
