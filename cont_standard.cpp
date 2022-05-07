@@ -36,13 +36,13 @@ void cont_standard::efectuare_plata() {
 
 }
 
-void cont_standard::depunere(int sumadep, const std::string monedadep) {
+void cont_standard::depunere(int sumadep, const std::string &monedadep) {
 
     suma = suma + sumadep * curs[{moneda, monedadep}];
 
 }
 
-void cont_standard::extragere(int sumaextr, const std::string monedaextr) {
+void cont_standard::extragere(int sumaextr, const std::string &monedaextr) {
 
     sumaextr= sumaextr* curs[{moneda, monedaextr}];
     if(suma< sumaextr) throw (eroare_fonduri_insuficiente{"Fonduri insuficiente\n"});

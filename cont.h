@@ -41,10 +41,10 @@ public:
 
     // metode - 3
     // fctia 1
-    virtual void depunere(int sumadep, std::string monedadep)= 0;
+    virtual void depunere(int sumadep, const std::string &monedadep)= 0;
 
     // fctia 2
-    virtual void extragere(int sumaextr,  std::string monedaextr)=0   ;
+    virtual void extragere(int sumaextr, const  std::string &monedaextr)=0   ;
     // fctia 3
     virtual void tranzactie( Cont& other_cont, int sumatranz) = 0 ;
 

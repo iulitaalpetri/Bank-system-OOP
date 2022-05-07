@@ -28,11 +28,11 @@ public:
     ~pers_fizica() override;
     bool verificare_varsta() const;
 
-    [[maybe_unused]] [[nodiscard]] const std::string &getNume() const;
-
-    [[maybe_unused]] [[nodiscard]] const std::string &getPrenume() const;
-
-    [[maybe_unused]] [[nodiscard]] int getVarsta() const;
+//    [[maybe_unused]] [[nodiscard]] const std::string &getNume() const;
+//
+//    [[maybe_unused]] [[nodiscard]] const std::string &getPrenume() const;
+//
+//    [[maybe_unused]] [[nodiscard]] int getVarsta() const;
 
 
 

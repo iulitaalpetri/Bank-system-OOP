@@ -6,7 +6,6 @@
 #include "cont_curent.h"
 #include "cont_premium.h"
 #include "exceptii.h"
-#include "Banca.h"
 #include "cont_standard.h"
 
 int main()
@@ -28,6 +27,8 @@ int main()
         std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 30, 20 );
         dynamic_cast<contcurent&>(*c_c).afisare(std::cout);
             dynamic_cast<contcurent&>(*c_c).plata_abonament();
+            dynamic_cast<contcurent&>(*c_c).plata_utilitati();
+
             dynamic_cast<contcurent&>(*c_c).extragere(20, "lei");
             dynamic_cast<contcurent&>(*c_c).depunere(100, "euro");
             dynamic_cast<contcurent&>(*c_c).afisare(std::cout);

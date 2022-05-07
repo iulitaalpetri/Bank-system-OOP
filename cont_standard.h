@@ -28,8 +28,8 @@ public:
 
     void efectuare_plata();
 
-    void depunere(int sumadep, const std::string monedadep) override;
-    void extragere(int sumaextr, const std::string monedaextr)  override;
+    void depunere(int sumadep, const std::string &monedadep) override;
+    void extragere(int sumaextr, const std::string &monedaextr)  override;
     void tranzactie(Cont & other_cont, int sumatranz ) override;
     [[nodiscard]] std::shared_ptr<Cont> clone() const override;
 

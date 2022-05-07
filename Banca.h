@@ -17,7 +17,7 @@ public:
     //constr default
     Banca();
     // const init
-    Banca(const std::string &nume_, const std::string &sucursala_, std::vector<std::shared_ptr<Cont>> conturi_);
+    [[maybe_unused]] Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<std::shared_ptr<Cont>> &conturi_);
 
 
     //Swap
@@ -28,9 +28,9 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Banca& ob);//afisare, suprainc op <<
 
     //adaugare cont in vect
-    void addCont(Cont& cont) ;
+    [[maybe_unused]] void addCont(const Cont& cont) ;
     //constr cop
-    Banca(const Banca& other) ;
+    [[maybe_unused]] Banca(const Banca& other) ;
 
     // suprainc op =
     Banca& operator=(const Banca& other) ;

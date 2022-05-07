@@ -37,8 +37,8 @@ public:
 
     [[maybe_unused]] void plata_utilitati();
 
-    void extragere(int sumaextr, std::string monedaextr) override ;
-    void depunere(int sumadep, std::string monedadep)  override;
+    void extragere(int sumaextr, const std::string &monedaextr) override ;
+    void depunere(int sumadep, const std::string &monedadep)  override;
     //nefolosita
     void tranzactie(Cont& other_cont, int sumatranz) override;
     //clonare

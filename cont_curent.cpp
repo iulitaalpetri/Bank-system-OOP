@@ -56,7 +56,7 @@ void contcurent::plata_abonament() {
 
 }
 
-void contcurent::extragere(int sumaextr, const std::string monedaextr) {
+void contcurent::extragere(int sumaextr, const std::string &monedaextr) {
 
     sumaextr= sumaextr* curs[{moneda, monedaextr}];
     if(comision* suma< sumaextr) throw(eroare_fonduri_insuficiente{"Fonduri insuficiente.\n"});
@@ -74,7 +74,7 @@ void contcurent::afisare_istoric() {
                  << get<1>(istoric_tranzactii[i]) << " "
                  << get<2>(istoric_tranzactii[i]) << "\n";
     }}
-void contcurent::depunere(int sumadep, const std::string monedadep) {
+void contcurent::depunere(int sumadep, const std::string &monedadep) {
     std::cout<<"depunere numerar\n";
     suma = suma + sumadep * curs[{moneda, monedadep}];
     istoric_tranzactii.push_back(std::make_tuple(date, "Depunere numerar", sumadep));}

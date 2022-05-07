@@ -11,14 +11,14 @@ cont_premium::cont_premium(int suma_, const  std::string &moneda_, const  std::s
 
 
 
-void cont_premium::depunere(int sumadep, const std::string monedadep) {
+void cont_premium::depunere(int sumadep, const std::string &monedadep) {
 
     suma = suma + sumadep * curs[{moneda, monedadep}];
 }
 
 
 
-void cont_premium::extragere(int sumaextr, const std::string monedaextr) {
+void cont_premium::extragere(int sumaextr, const std::string &monedaextr) {
 
     sumaextr= sumaextr* curs[{moneda, monedaextr}];
     if(suma< sumaextr)throw (eroare_fonduri_insuficiente{"Fonduri insuficienta \n"});

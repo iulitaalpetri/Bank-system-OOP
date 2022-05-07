@@ -11,7 +11,7 @@ Titular::~Titular() {
 }
 
 void Titular::afisare(std::ostream &os) const {
-    auto& Titular = *this;
+    const auto& Titular = *this;
     os << "x: " << Titular.id<<std::endl;
 }
 
