@@ -10,9 +10,9 @@ std::ostream& operator<<(std::ostream& os, const Banca& ob){
     return os;
 }
 
-[[maybe_unused]] void Banca::addCont(const Cont& cont) {
-    conturi.emplace_back(cont.clone());
-}
+//[[maybe_unused]] void Banca::addCont(const Cont& cont) {
+//    conturi.emplace_back(cont.clone());
+//}
 
 [[maybe_unused]] Banca::Banca(const Banca &other):nume(other.nume), sucursala(other.sucursala), conturi(other.conturi) {
 //    conturi.push_back(static_cast<const std::shared_ptr<Cont>>(cont->clone()));

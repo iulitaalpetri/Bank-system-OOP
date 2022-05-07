@@ -28,7 +28,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Banca& ob);//afisare, suprainc op <<
 
     //adaugare cont in vect
-    [[maybe_unused]] void addCont(const Cont& cont) ;
+    //[[maybe_unused]] void addCont(const Cont& cont) ;
     //constr cop
     [[maybe_unused]] Banca(const Banca& other) ;
 
