@@ -3,7 +3,6 @@
 ////
 //
 //#include "template.h"
-//#include "Banca.h"
 //
 //Banca::Banca() {}
 //

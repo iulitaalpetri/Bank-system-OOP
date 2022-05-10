@@ -31,8 +31,8 @@ void cont_standard::efectuare_plata() {
 
     int zi = local_time->tm_mday;
     if(zi>2)
-     suma= suma- taxa*taxa_intarziere_plata;
-    else suma= suma- taxa;
+     suma= suma- int(taxa)* int(taxa_intarziere_plata);
+    else suma= suma- int(taxa);
 
 }
 
