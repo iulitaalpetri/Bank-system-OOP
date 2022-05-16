@@ -24,8 +24,3 @@ void pers_juridica::afisare(std::ostream &os) const {
 //    return nume_firma;
 //}
 
-std::shared_ptr<Titular> pers_juridica::clone()const {
-    std::cout<<"Clonare_titular\n";
-    return std::make_shared<pers_juridica>(*this);
-}
-
