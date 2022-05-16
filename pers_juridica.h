@@ -13,7 +13,7 @@ class pers_juridica:public Titular{
     std::string nume_firma;
 public:
     //clonare
-    [[nodiscard]] std::shared_ptr<Titular> clone() const override;
+    [[maybe_unused]] std::shared_ptr<Titular> clone() const override;
 
     explicit pers_juridica(int id_, std::string nume_reprezentant_, std::string prenume_reprezentant_ , std::string nume_firma_);
     virtual ~pers_juridica();
