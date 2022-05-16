@@ -2,7 +2,7 @@
 #include "exceptii.h"
 
 
-cont_premium::cont_premium(int suma_, const  std::string &moneda_, const  std::string &iban_, const std::shared_ptr<Titular>& titular_, int taxa_init_):Cont( suma_,  moneda_,  iban_,  titular_), taxa_init(taxa_init_) {
+cont_premium::cont_premium(int suma_, const  std::string &moneda_, const  std::string &iban_, const std::shared_ptr<Titular>& titular_, int c,int taxa_init_):Cont( suma_,  moneda_,  iban_,  titular_, c), taxa_init(taxa_init_) {
     if(suma< suma_min) throw (eroare_suma_cont{"Suma insuficienta\n"});
     else suma= suma- taxa_init_;
 

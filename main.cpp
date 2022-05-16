@@ -24,7 +24,7 @@ int main()
         dynamic_cast<pers_fizica&>(*pf1).afisare(std::cout);
         if  (pf1->isId()) throw(eroare_cont_curent{"Contul curent este valabil doar pentru persoane fizice.\n"});
         else{
-        std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 30, 20 );
+        std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 5, 30, 20 );
         dynamic_cast<contcurent&>(*c_c).afisare(std::cout);
             dynamic_cast<contcurent&>(*c_c).plata_abonament();
             dynamic_cast<contcurent&>(*c_c).plata_utilitati();
@@ -48,7 +48,7 @@ int main()
         else{
             dynamic_cast<pers_fizica&>(*pf2).afisare(std::cout);
 
-                std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2, 10, 0.05);
+                std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2,5,  10, 0.05);
             dynamic_cast<cont_standard&>(*c_s).afisare(std::cout);
 
             dynamic_cast<cont_standard&>(*c_s).efectuare_plata();
@@ -73,7 +73,7 @@ int main()
         std::cout << err.what() << "\n";
     }
     try {
-        std::shared_ptr<Cont> c_p = std::make_shared<cont_premium>( 700, "euro", "756834",pj, 50    );
+        std::shared_ptr<Cont> c_p = std::make_shared<cont_premium>( 700, "euro", "756834",pj, 5, 50    );
         dynamic_cast<cont_premium &>(*c_p).afisare(std::cout);
         dynamic_cast<cont_premium &>(*c_p).extragere(900, "euro");
         dynamic_cast<cont_premium &>(*c_p).depunere(20, "lei");

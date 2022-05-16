@@ -21,7 +21,7 @@ protected:
 public:
 
     //constr
-    Cont(int suma_, std::string moneda_,  std::string iban_, std::shared_ptr<Titular> titular_);
+    Cont(int suma_, std::string moneda_,  std::string iban_, std::shared_ptr<Titular> titular_, int c);
 
     //destr
     virtual ~Cont() ;

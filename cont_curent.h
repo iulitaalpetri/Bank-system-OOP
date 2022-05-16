@@ -24,7 +24,7 @@ class contcurent : public Cont{
 
 public:
     //constr
-    contcurent(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular>& titular_, float abonament_telefon_, float utilitati_);
+    contcurent(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular>& titular_,int c, float abonament_telefon_, float utilitati_);
 
     //destr
     virtual ~contcurent() ;
@@ -39,19 +39,11 @@ public:
 
     void extragere(int sumaextr, const std::string &monedaextr) override ;
     void depunere(int sumadep, const std::string &monedadep)  override;
-    //nefolosita
+
     void tranzactie(Cont& other_cont, int sumatranz) override;
     //clonare
     [[nodiscard]] std::shared_ptr<Cont> clone() const override;
     void afisare_istoric();
-
-//        list<Avocat>::iterator i; ///Creez un iterator
-//        cout << "---------------------------------------------------------------\n";
-//        for (i = barou.begin(); i != barou.end(); ++i) { ///De la inceputul listei pana la final, parcurg si afisez continutul iteratorului
-//            cout << (*i);
-//        }
-
-
 
 
 
