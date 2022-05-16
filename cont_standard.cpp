@@ -27,7 +27,7 @@ void cont_standard::afisare(std::ostream &os) const {
 void cont_standard::efectuare_plata() {
 
     time_t now = time(nullptr);
-    tm *local_time = localtime_s(&now);
+    tm *local_time = localtime(&now);
 
     int zi = local_time->tm_mday;
     if(zi>2)
