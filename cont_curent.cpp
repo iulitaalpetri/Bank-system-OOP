@@ -7,7 +7,7 @@
 #include "exceptii.h"
 
 
-contcurent::contcurent(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular> &titular_, int c,float abonament_telefon_, float utilitati_) : Cont( suma_,  moneda_,  iban_, titular_, c) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
+contcurent::contcurent(int suma_, const std::string &moneda_, const std::string &iban_,Titular* titular_, int c,float abonament_telefon_, float utilitati_) : Cont( suma_,  moneda_,  iban_, titular_, c) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
 
     if(suma_< suma_min) throw(eroare_suma_cont{"Suma insuficienta\n"});
     else
@@ -80,8 +80,4 @@ void contcurent::depunere(int sumadep, const std::string &monedadep) {
     istoric_tranzactii.push_back(std::make_tuple(date, "Depunere numerar", sumadep));}
 
 
-std::shared_ptr<Cont> contcurent::clone() const{
 
-    return std::make_shared<contcurent>(*this);
-
-} //eroare

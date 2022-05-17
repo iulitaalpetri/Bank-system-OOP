@@ -24,7 +24,7 @@ class contcurent : public Cont{
 
 public:
     //constr
-    contcurent(int suma_, const std::string &moneda_, const std::string &iban_, const std::shared_ptr<Titular>& titular_,int c, float abonament_telefon_, float utilitati_);
+    contcurent(int suma_, const std::string &moneda_, const std::string &iban_,Titular * titular_,int c, float abonament_telefon_, float utilitati_);
 
     //destr
     virtual ~contcurent() ;
@@ -42,7 +42,7 @@ public:
 
     void tranzactie(Cont& other_cont, int sumatranz) override;
     //clonare
-    [[nodiscard]] std::shared_ptr<Cont> clone() const override;
+    Cont* clone() const override { return new contcurent(*this); }
     void afisare_istoric();
 
 

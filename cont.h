@@ -11,17 +11,19 @@ protected:
     int suma;
     std::string moneda;
     std::string iban;
-    std::shared_ptr<Titular> titular;
+   Titular* titular;
     std::map<std::pair<std::string, std::string>, double> curs;
 
     //clonare
-    Cont(const Cont&) =default;
-    Cont & operator=(const Cont& c)= default ;
+//    Cont(const Cont&) =default;
+//    Cont & operator=(const Cont& c)= default ;
+
+    virtual Cont* clone() const = 0;
 
 public:
 
     //constr
-    Cont(int suma_, std::string moneda_,  std::string iban_, std::shared_ptr<Titular> titular_, int c);
+    Cont(int suma_, std::string moneda_,  std::string iban_, Titular *, int c);
 
     //destr
     virtual ~Cont() ;
@@ -49,5 +51,4 @@ public:
     virtual void tranzactie( Cont& other_cont, int sumatranz) = 0 ;
 
 
-    [[nodiscard]] virtual std::shared_ptr<Cont> clone() const= 0 ;// ptr
 };

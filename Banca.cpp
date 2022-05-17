@@ -1,7 +1,7 @@
 #include "Banca.h"
 Banca::Banca() {}
 
-[[maybe_unused]] Banca::Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<std::shared_ptr<Cont>> &conturi_):
+[[maybe_unused]] Banca::Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<Cont *> &conturi_):
         nume(nume_), sucursala(sucursala_), conturi(conturi_){ std::cout<<"Constr init Banca"; }
 
 std::ostream& operator<<(std::ostream& os, const Banca& ob){

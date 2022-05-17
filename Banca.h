@@ -9,7 +9,7 @@ class Banca{
 protected:
     std::string nume;
     std::string sucursala;
-    std::vector<std::shared_ptr<Cont>> conturi;
+    std::vector<Cont *> conturi;
 
 
 
@@ -17,7 +17,7 @@ public:
     //constr default
     Banca();
     // const init
-    [[maybe_unused]] Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<std::shared_ptr<Cont>> &conturi_);
+    [[maybe_unused]] Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<Cont *> &conturi_);
 
 
     //Swap

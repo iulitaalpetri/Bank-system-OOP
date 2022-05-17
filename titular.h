@@ -8,9 +8,7 @@ class Titular{
 protected:
     bool id{};//  true pers fiz, false pers jurid
     //clonare
-    Titular(const Titular&) = default;
-    Titular & operator=(const Titular& ac) = default;
-
+    virtual Titular* clone() const=0;
 public:
     //constr default
     Titular();
@@ -29,6 +27,5 @@ public:
     [[nodiscard]] bool isId() const;
 
 
-    [[nodiscard]] virtual std::shared_ptr<Titular> clone() const = 0; //ptr clasa de baza
 
 };

@@ -24,22 +24,6 @@ pers_fizica::~pers_fizica() {
 }
 
 
-//[[maybe_unused]] const std::string &pers_fizica::getNume() const {
-//    return nume;
-//}
-//
-//
-//[[maybe_unused]] const std::string &pers_fizica::getPrenume() const {
-//    return prenume;
-//}
-//
-//[[maybe_unused]] int pers_fizica::getVarsta() const {
-//    return varsta;
-//}
 
 
-std::shared_ptr<Titular> pers_fizica::clone()const {
-    std::cout<<"Clonare_titular\n";
-    return std::make_shared<pers_fizica>(*this);
-}
 

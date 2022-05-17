@@ -15,12 +15,12 @@ class pers_fizica:public Titular{
 public:
 
     //clonare
-    [[nodiscard]] std::shared_ptr<Titular> clone() const override;
+    Titular* clone() const override { return new pers_fizica(*this); }
+
     pers_fizica();
     pers_fizica(const int &id_, std::string nume_, std::string prenume_,  int varsta_, std::string cnp_)
             : Titular(id_), nume(std::move(nume_)), prenume(std::move(prenume_)), varsta(varsta_), cnp(std::move(cnp_)) {
 
-//    if (varsta_ < 18) throw eroare_varsta();
 
         std::cout << "constr init pers fizica- derivata" << std::endl;
     }
@@ -28,11 +28,7 @@ public:
     ~pers_fizica() override;
     bool verificare_varsta() const;
 
-//    [[maybe_unused]] [[nodiscard]] const std::string &getNume() const;
-//
-//    [[maybe_unused]] [[nodiscard]] const std::string &getPrenume() const;
-//
-//    [[maybe_unused]] [[nodiscard]] int getVarsta() const;
+
 
 
 
