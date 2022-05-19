@@ -21,7 +21,7 @@ class cont_standard: public Cont{
 public:
 
 
-    explicit cont_standard(int suma_, const std::string &moneda_, const std::string &iban_, Titular *titular_,int c,  int taxa_,  float comision_ );
+    explicit cont_standard(float suma_, const std::string &moneda_, const std::string &iban_, Titular *titular_,int c,  int taxa_,  float comision_ );
     virtual ~cont_standard();
     void afisare(std::ostream &os) const override ;
 

@@ -31,7 +31,9 @@ int main()
         if(dynamic_cast<pers_fizica*>(pf1)->verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
     else {
         dynamic_cast<pers_fizica*>(pf1)->afisare(std::cout);
+        //modifica, pune throw in constr
         if  (pf1->isId()) throw(eroare_cont_curent{"Contul curent este valabil doar pentru persoane fizice.\n"});
+
         else{
         //std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 5, 30, 20 );
         Cont* c_c= new contcurent(1300, "lei", "643674", pf1, 5, 30, 20 );
@@ -58,7 +60,7 @@ int main()
         if(dynamic_cast<pers_fizica*>(pf2)->verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
         else{
             dynamic_cast<pers_fizica*>(pf2)->afisare(std::cout);
-
+           // std::cout<<"-------------------------------pers_f 2----------------------"<<std::endl;
                 //std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2,5,  10, 0.05);
                 Cont * c_s= new cont_standard (10000, "euro", "756834", pf2,5,  10, 0.05);
                 cont_standard *x= dynamic_cast<cont_standard*>(c_s);
@@ -68,7 +70,9 @@ int main()
             x->afisare(std::cout);
             x->extragere(10, "euro");
             x->depunere(30, "lei");
-            x->tranzactie(dynamic_cast<Cont&>(*c_s), 50);
+            x->tranzactie(dynamic_cast<Cont&>(*c_s), 10000);
+            x->afisare(std::cout);
+
 
 
 

@@ -8,7 +8,7 @@
 
 class Cont {
 protected:
-    int suma;
+    float suma;
     std::string moneda;
     std::string iban;
    Titular* titular;
@@ -23,12 +23,12 @@ protected:
 public:
 
     //constr
-    Cont(int suma_, std::string moneda_,  std::string iban_, Titular *, int c);
+    Cont(float suma_, std::string moneda_,  std::string iban_, Titular *, int c);
 
     //destr
     virtual ~Cont() ;
     //setter
-    void setSuma(int suma);
+    void setSuma(float suma);
 
     virtual void afisare(std::ostream& os) const;
 

@@ -5,7 +5,7 @@
 #include <utility>
 #include <iostream>
 
-Cont::Cont(int suma_, std::string moneda_,  std::string iban_, Titular * titular_, int c) : suma(suma_),moneda(std::move(moneda_)), iban(std::move(iban_)), titular(std::move(titular_)) {
+Cont::Cont(float suma_, std::string moneda_,  std::string iban_, Titular * titular_, int c) : suma(suma_),moneda(std::move(moneda_)), iban(std::move(iban_)), titular(std::move(titular_)) {
     curs[{"lei", "euro"}] = c;
     curs[{"euro", "lei"}]= 1/c;
     curs[{"lei", "lei"}]= 1;
@@ -40,6 +40,6 @@ const std::string &Cont::getIban() const {
     return iban;
 }
 
-void Cont::setSuma(int x) {
+void Cont::setSuma(float x) {
     Cont::suma = x;
 }
