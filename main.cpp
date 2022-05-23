@@ -55,17 +55,16 @@ int main()
         else{
             pf2->afisare(std::cout);
            // std::cout<<"-------------------------------pers_f 2----------------------"<<std::endl;
-                //std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2,5,  10, 0.05);
-                Cont * c_s= new cont_standard (10000, "euro", "756834", pf2,5,  10, 0.05);
-                cont_standard *x= dynamic_cast<cont_standard*>(c_s);
-                x->afisare(std::cout);
+                std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2,5,  10, 0.05);
+                cont_standard x= dynamic_cast<cont_standard&>(*c_s);
+                x.afisare(std::cout);
 
-            x->efectuare_plata();
-            x->afisare(std::cout);
-            x->extragere(10, "euro");
-            x->depunere(30, "lei");
-            x->tranzactie(dynamic_cast<Cont&>(*c_s), 10000);
-            x->afisare(std::cout);
+            x.efectuare_plata();
+            x.afisare(std::cout);
+            x.extragere(10, "euro");
+            x.depunere(30, "lei");
+            x.tranzactie(dynamic_cast<Cont&>(*c_s), 10000);
+            x.afisare(std::cout);
 
 
 
@@ -84,15 +83,14 @@ int main()
         std::cout << err.what() << "\n";
     }
     try {
-        //std::shared_ptr<Cont> c_p = std::make_shared<cont_premium>( 700, "euro", "756834",pj, 5, 50    );
-        Cont * c_p= new cont_premium( 700, "euro", "756834",pj, 5, 50    );
-        cont_premium *x= dynamic_cast<cont_premium *>(c_p);
+        std::shared_ptr<Cont> c_p = std::make_shared<cont_premium>( 700, "euro", "756834",pj, 5, 50    );
+        cont_premium x= dynamic_cast<cont_premium &>(*c_p);
 
-        x->afisare(std::cout);
-        x->extragere(900, "euro");
-        x->depunere(20, "lei");
-        x->tranzactie(dynamic_cast<Cont &>(*c_p), 50);
-        x-> afisare(std::cout);
+        x.afisare(std::cout);
+        x.extragere(900, "euro");
+        x.depunere(20, "lei");
+        x.tranzactie(dynamic_cast<Cont &>(*c_p), 50);
+        x.afisare(std::cout);
 
     }catch (std::exception& err) {
         std::cout << err.what() << "\n";
