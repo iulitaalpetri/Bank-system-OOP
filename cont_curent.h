@@ -24,7 +24,8 @@ class contcurent : public Cont{
 
 public:
     //constr
-    contcurent(float suma_, const std::string &moneda_, const std::string &iban_,std::shared_ptr<Titular> titular_,int c, float abonament_telefon_, float utilitati_);
+    contcurent(float suma_, const std::string &moneda_, std::shared_ptr<Titular> titular_,
+               int c, float abonament_telefon_, float utilitati_);
 
     //destr
     virtual ~contcurent() ;
