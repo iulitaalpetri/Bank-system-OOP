@@ -15,37 +15,31 @@ int main()
 
 
 
-    //std::shared_ptr<Titular> pf1 = std::make_shared<pers_fizica>(0, "Alpetri", "Iulita", 20, "7652835689");
-    Titular *pf1= new pers_fizica(0, "Alpetri", "Iulita", 20, "7652835689");
-    //std::shared_ptr<Titular> pf2 = std::make_shared<pers_fizica>(0, "Ureche", "Mara", 23, "53453435");
-    Titular *pf2= new pers_fizica(0, "Ureche", "Mara", 23, "53453435");
-    //std::shared_ptr<Titular> pf3 = std::make_shared<pers_fizica>(0, "Ioan", "Georgescu", 16, "568976567");
-    Titular *pf3= new pers_fizica (0, "Ioan", "Georgescu", 16, "568976567");
-    //std::shared_ptr<Titular> pj= std::make_shared<pers_juridica>(1, "Alin", "Popescu", "Nume_firma");
-    Titular *pj= new pers_juridica (1, "Alin", "Popescu", "Nume_firma");
+    std::shared_ptr<Titular> pf1 = std::make_shared<pers_fizica>(0, "Alpetri", "Iulita", 20, "7652835689");
+    std::shared_ptr<Titular> pf2 = std::make_shared<pers_fizica>(0, "Ureche", "Mara", 23, "53453435");
+    std::shared_ptr<Titular> pf3 = std::make_shared<pers_fizica>(0, "Ioan", "Georgescu", 16, "568976567");
+    std::shared_ptr<Titular> pj= std::make_shared<pers_juridica>(1, "Alin", "Popescu", "Nume_firma");
 
 
 
     try{
-    //if(dynamic_cast<pers_fizica&>(*pf1).verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
-        if(dynamic_cast<pers_fizica*>(pf1)->verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
+        if(dynamic_cast<pers_fizica&>(*pf1).verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
     else {
-        dynamic_cast<pers_fizica*>(pf1)->afisare(std::cout);
+        pf1->afisare(std::cout);
         //modifica, pune throw in constr
         if  (pf1->isId()) throw(eroare_cont_curent{"Contul curent este valabil doar pentru persoane fizice.\n"});
 
         else{
-        //std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 5, 30, 20 );
-        Cont* c_c= new contcurent(1300, "lei", "643674", pf1, 5, 30, 20 );
-        contcurent *x= dynamic_cast<contcurent*>(c_c);
-        x->afisare(std::cout);
-            x->plata_abonament();
-            x->plata_utilitati();
+        std::shared_ptr<Cont> c_c = std::make_shared<contcurent>(300, "lei", "643674", pf1, 5, 30, 20 );
 
-            x->extragere(20, "lei");
-            x->depunere(100, "euro");
-            x->afisare(std::cout);
-            x->afisare_istoric();
+        c_c->afisare(std::cout);
+            dynamic_cast<contcurent&>(*c_c).plata_abonament();
+           dynamic_cast<contcurent&>(*c_c).plata_utilitati();
+
+            c_c->extragere(20, "lei");
+            c_c->depunere(100, "euro");
+            c_c->afisare(std::cout);
+            dynamic_cast<contcurent&>(*c_c).afisare_istoric();
 
 
         }
@@ -57,9 +51,9 @@ int main()
     }
 
     try{
-        if(dynamic_cast<pers_fizica*>(pf2)->verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
+        if(dynamic_cast<pers_fizica&>(*pf2).verificare_varsta()== 0) throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
         else{
-            dynamic_cast<pers_fizica*>(pf2)->afisare(std::cout);
+            pf2->afisare(std::cout);
            // std::cout<<"-------------------------------pers_f 2----------------------"<<std::endl;
                 //std::shared_ptr<Cont> c_s = std::make_shared<cont_standard>(10000, "euro", "756834", pf2,5,  10, 0.05);
                 Cont * c_s= new cont_standard (10000, "euro", "756834", pf2,5,  10, 0.05);
@@ -84,7 +78,7 @@ int main()
     }
 
     try {
-        if (dynamic_cast<pers_fizica *>(pf3)->verificare_varsta() == 0)
+        if (dynamic_cast<pers_fizica &>(*pf3).verificare_varsta() == 0)
             throw (eroare_varsta{"Minor, are nevoie de un tutore! \n"});
     }catch (std::exception& err) {
         std::cout << err.what() << "\n";

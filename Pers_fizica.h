@@ -15,7 +15,9 @@ class pers_fizica:public Titular{
 public:
 
     //clonare
-    Titular* clone() const override { return new pers_fizica(*this); }
+    std::shared_ptr<Titular> clone() override{
+        return std::make_shared<pers_fizica>(*this);
+    }
 
     pers_fizica();
     pers_fizica(const int &id_, std::string nume_, std::string prenume_,  int varsta_, std::string cnp_)

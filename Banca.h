@@ -5,11 +5,12 @@
 #include <vector>
 #include <map>
 #include "cont.h"
+
 class Banca{
 protected:
     std::string nume;
     std::string sucursala;
-    std::vector<Cont *> conturi;
+    std::vector<std::shared_ptr<Cont>> conturi;
 
 
 
@@ -17,7 +18,7 @@ public:
     //constr default
     Banca();
     // const init
-    [[maybe_unused]] Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<Cont *> &conturi_);
+    [[maybe_unused]] Banca(const std::string &nume_, const std::string &sucursala_, const std::vector<std::shared_ptr<Cont>> &conturi_);
 
 
     //Swap

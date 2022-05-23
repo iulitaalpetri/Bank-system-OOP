@@ -6,7 +6,7 @@
 #include "cont_standard.h"
 
 
-cont_standard::cont_standard(float suma_, const std::string &moneda_, const std::string &iban_,Titular* titular_,int c,
+cont_standard::cont_standard(float suma_, const std::string &moneda_, const std::string &iban_,std::shared_ptr<Titular> titular_,int c,
                               int taxa_, float comision_) :Cont( suma_,   moneda_,   iban_,  titular_,  c),
 taxa(taxa_), comision(comision_){
     if (suma < suma_min) throw (eroare_suma_cont{"Suma insuficienta\n"});

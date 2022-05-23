@@ -7,7 +7,7 @@
 #include "exceptii.h"
 
 
-contcurent::contcurent(float suma_, const std::string &moneda_, const std::string &iban_,Titular* titular_, int c,float abonament_telefon_, float utilitati_) : Cont( suma_,  moneda_,  iban_, titular_, c) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
+contcurent::contcurent(float suma_, const std::string &moneda_, const std::string &iban_,std::shared_ptr<Titular> titular_, int c,float abonament_telefon_, float utilitati_) : Cont( suma_,  moneda_,  iban_, titular_, c) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
 
     if(suma_< suma_min) throw(eroare_suma_cont{"Suma insuficienta\n"});
     else
@@ -40,10 +40,7 @@ void contcurent::plata_abonament() {
         std::cout<<"plata abonament\n";
         suma = suma - abonament_telefon ;
         istoric_tranzactii.push_back(std::tuple(date, "Incarcare cartela", abonament_telefon));
-    }
-
-
-}
+    } }
 
 [[maybe_unused]] void contcurent::plata_utilitati() {
     int zi = local_time->tm_mday;

@@ -7,9 +7,10 @@
 class Titular{
 protected:
     bool id{};//  true pers fiz, false pers jurid
-    //clonare
-    virtual Titular* clone() const=0;
+
 public:
+    //clonare
+    virtual std::shared_ptr<Titular> clone()=0;
     //constr default
     Titular();
     //constr init

@@ -13,7 +13,9 @@ class pers_juridica:public Titular{
     std::string nume_firma;
 public:
     //clonare
-    Titular* clone() const override { return new pers_juridica(*this); }
+    std::shared_ptr<Titular> clone() override{
+        return std::make_shared<pers_juridica>(*this);
+    }
 
     explicit pers_juridica(int id_, std::string nume_reprezentant_, std::string prenume_reprezentant_ , std::string nume_firma_);
     virtual ~pers_juridica();

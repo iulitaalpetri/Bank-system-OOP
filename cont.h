@@ -11,19 +11,19 @@ protected:
     float suma;
     std::string moneda;
     std::string iban;
-   Titular* titular;
+   std::shared_ptr<Titular> titular;
     std::map<std::pair<std::string, std::string>, double> curs;
+    friend class builder_cont;
 
-    //clonare
-//    Cont(const Cont&) =default;
-//    Cont & operator=(const Cont& c)= default ;
 
-    virtual Cont* clone() const = 0;
+
 
 public:
+    //clone
+    virtual std::shared_ptr<Cont> clone()=0;
 
     //constr
-    Cont(float suma_, std::string moneda_,  std::string iban_, Titular *, int c);
+    Cont(float suma_, std::string moneda_,  std::string iban_, std::shared_ptr<Titular> titular_, int c);
 
     //destr
     virtual ~Cont() ;
