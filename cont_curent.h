@@ -41,7 +41,7 @@ public:
     void extragere(int sumaextr, const std::string &monedaextr) override ;
     void depunere(int sumadep, const std::string &monedadep)  override;
 
-    void tranzactie(Cont& other_cont, int sumatranz) override;
+    void tranzactie(std::shared_ptr<Cont> other_cont, int sumatranz) override;
     //clonare
     std::shared_ptr<Cont> clone() override{
         return std::make_shared<contcurent>(*this);

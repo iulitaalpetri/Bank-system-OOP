@@ -22,7 +22,7 @@ public:
     void afisare(std::ostream &os) const override ;
     void depunere(int sumadep, const std::string &monedadep) override;
     void extragere(int sumaextr, const std::string &monedaextr)  override;
-    void tranzactie(Cont& other_cont, int sumatranz ) override;
+    void tranzactie(std::shared_ptr<Cont> other_cont, int sumatranz ) override;
     std::shared_ptr<Cont> clone() override{
         return std::make_shared<cont_premium>(*this);
     }

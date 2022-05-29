@@ -6,7 +6,7 @@
 #include <iostream>
 int Cont::contor=1;
 
-Cont::Cont(float suma_, std::string moneda_,   std::shared_ptr<Titular> titular_, int c) : suma(suma_),moneda(std::move(moneda_)), iban(contor++), titular(std::move(titular_)) {
+Cont::Cont(float suma_, std::string moneda_,   std::shared_ptr<Titular> titular_, int c) : suma(suma_),moneda(std::move(moneda_)), iban(contor++), titular(titular_->clone()) {
     curs[{"lei", "euro"}] = c;
     curs[{"euro", "lei"}]= 1/c;
     curs[{"lei", "lei"}]= 1;

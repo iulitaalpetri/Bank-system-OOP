@@ -10,14 +10,14 @@
 contcurent::contcurent(float suma_, const std::string &moneda_, std::shared_ptr<Titular> titular_, int c,float abonament_telefon_, float utilitati_) : Cont( suma_,  moneda_,   titular_, c) ,abonament_telefon(abonament_telefon_), utilitati(utilitati_){
 
     if(suma_< suma_min) throw(eroare_suma_cont{"Suma insuficienta\n"});
-    else if  (titular_->isId()) throw(eroare_cont_curent{"Contul curent este valabil doar pentru persoane fizice.\n"});
+    else if  (!titular_->isId()) throw(eroare_cont_curent{"Contul curent este valabil doar pentru persoane fizice.\n"});
     else
 
     std::cout<<"constr init cont_curent"<< std::endl;
 }
 
-void contcurent::tranzactie(Cont &other_cont, int sumatranz) {
-    other_cont.setSuma(other_cont.getSuma()+ sumatranz * curs[{moneda, other_cont.getMoneda()}]) ;
+void contcurent::tranzactie(std::shared_ptr<Cont> other_cont, int sumatranz) {
+    other_cont->setSuma(other_cont->getSuma()+ sumatranz * curs[{moneda, other_cont->getMoneda()}]) ;
 
 }
 

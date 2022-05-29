@@ -50,14 +50,14 @@ void cont_standard::extragere(int sumaextr, const std::string &monedaextr) {
 
 }
 
-void cont_standard::tranzactie(Cont &other_cont, int sumatranz) {
+void cont_standard::tranzactie(std::shared_ptr<Cont> other_cont, int sumatranz) {
 
-    other_cont.setSuma(other_cont.getSuma()+ sumatranz * curs[{moneda, other_cont.getMoneda()}]) ;
+    other_cont->setSuma(other_cont->getSuma()+ sumatranz * curs[{moneda, other_cont->getMoneda()}]) ;
     if(sumatranz< 100) throw(eroare_tranzactie{"Tranzactia nu poate fi realizata, suma prea mica\n"});
     else if(suma< sumatranz) throw( eroare_fonduri_insuficiente{"Fonduri innsuficiente\n"});
     else {
         suma = suma - comision* sumatranz;
         std::cout << "Tranzactie realizata cu succes. Ati trimis" << sumatranz << "lei catre contul cu iban: " <<
-                  other_cont.getIban()       <<"."  << std::endl;}}
+                  other_cont->getIban()       <<"."  << std::endl;}}
 
 

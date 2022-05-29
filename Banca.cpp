@@ -25,6 +25,10 @@ Banca::~Banca() {
     std::cout<<"dstructor banca";
 }
 
+const std::vector<std::shared_ptr<Cont>> &Banca::getConturi() const {
+    return conturi;
+}
+
 
 
 

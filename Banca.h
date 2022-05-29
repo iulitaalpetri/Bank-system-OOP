@@ -27,9 +27,12 @@ public:
     };
 
     friend std::ostream& operator<<(std::ostream& os, const Banca& ob);//afisare, suprainc op <<
+    const std::vector<std::shared_ptr<Cont>> &getConturi() const;
 
     //adaugare cont in vect
-    //[[maybe_unused]] void addCont(const Cont& cont) ;
+    void addCont(const std::shared_ptr<Cont> c) {
+        conturi.push_back(c);
+    }
     //constr cop
     [[maybe_unused]] Banca(const Banca& other) ;
 

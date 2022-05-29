@@ -18,9 +18,10 @@
 class Menu {
 private:
     static Menu *instance;
-    std::shared_ptr<Cont> un_cont;
+    Banca banca;
+    std::shared_ptr<Cont> cont;
     std::shared_ptr<Cont> alt_cont;
-    std::shared_ptr<Titular> un_titular;
+    std::shared_ptr<Titular> pers;
     std::vector<std::shared_ptr<Cont>> lista_conturi;
     Banca b;
     friend class Cont;
@@ -51,7 +52,7 @@ public:
         std::cout<<"3. extragere numerar"<<std::endl;
         std::cout<<"4. efectuare tranzactie"<<std::endl;
         std::cout<<"5. plata utilitati(cont curent)"<<std::endl;
-        std::cout<<"6. plata abonament telefon"<<std::endl;
+        std::cout<<"6. plata abonament telefon(cont curent)"<<std::endl;
         std::cout<<"7. exit"<<std::endl;
         std::cout<<"----------------------------------------------------------------------------------"<<std::endl;
     }
@@ -60,7 +61,7 @@ public:
         //float nr;
         std::cout<<"Introduceti banca:"<<std::endl;
         std::cin>>un_string;
-        Banca b{un_string,un_string, lista_conturi};
+        banca= {un_string,un_string, lista_conturi};
         std::cout<<"Sunteti persoana fizica sau juridica?"<<std::endl;
         std::cin>>un_string;
         if(un_string=="fizica"){
@@ -77,11 +78,10 @@ public:
 
             std::cout<<"Cnp:"<<std::endl;
             std::cin>>cnp;
-            try{
-           std::shared_ptr<Titular> pers= std::make_shared<pers_fizica>(true, nume, prenume, varsta, cnp);}
-            catch(std::runtime_error &err){
-                std::cout<<err.what()<<std::endl;
-            }
+
+
+           pers= std::make_shared<pers_fizica>(true, nume, prenume, varsta, cnp);
+
         }
         else{
             std::string nume;
@@ -93,14 +93,15 @@ public:
             std::cin>>prenume;
             std::cout<<"Nume firma:"<<std::endl;
             std::cin>>firma;
-                       std::shared_ptr<Titular> pers= std::make_shared<pers_juridica>(false, nume, prenume, firma);
+            pers= std::make_shared<pers_juridica>(false, nume, prenume, firma);
+
 
 
         }
-        bool a=false;
+        //bool a=false;
         std::cout<<"Alegeti un tip de cont:curent, standard sau premium"<<std::endl;
         std::cin>>un_string;
-        while(!a){
+
         if(un_string== "curent"){
         int suma;
         std::string moneda;
@@ -118,32 +119,126 @@ public:
         std::cin>>telefon;
         std::cout<<"Utilitati:"<<std::endl;
         std::cin>>utilitati;
+        try{
+             cont = std::make_shared<contcurent>(suma, moneda,  pers, c, telefon, utilitati );
 
-//        try{
-//            //std::shared_ptr<Cont> cont = std::make_shared<contcurent>(suma, moneda,  pers, c, telefon, utilitati );
-//        }
-//        catch(std::runtime_error &err){
-//            std::cout<<err.what()<<std::endl;
-//        }
-
+        }
+        catch(std::runtime_error &err){
+            std::cout<<err.what()<<std::endl;
         }
 
         }
+        else if(un_string== "standard"){
+            float suma;
+            std::string moneda;
+            int c;
+            int taxa;
+            float comision;
+            std::cout<<"Introduceti:"<<std::endl;
+            std::cout<<"Suma"<<std::endl;
+            std::cin>>suma;
+            std::cout<<"Moneda:"<<std::endl;
+            std::cin>>moneda;
+            std::cout<<"C: "<<std::endl;// nu stiu
+            std::cin>>c;
+            std::cout<<"Comsision: "<<std::endl;
+            std::cin>>comision;
+            try{
+                 cont = std::make_shared<cont_standard>(suma, moneda, pers, c, taxa, comision);
+
+            }
+            catch(std::runtime_error &err){
+                std::cout<<err.what()<<std::endl;
+            }
+
+        }
+        else if(un_string== "premium"){
+            float suma;
+            std::string moneda;
+            int c;
+            int taxa;
+            std::cout<<"Introduceti"<<std::endl;
+            std::cout<<"Suma initiala"<<std::endl;
+            std::cin>>suma;
+            std::cout<<"Moneda"<<std::endl;
+            std::cin>>moneda;
+            std::cout<<"c"<<std::endl;
+            std::cin>> c;
+            std::cout<<"Taxa"<<std::endl;
+            std::cin>>taxa;
+            try{
+                cont = std::make_shared<cont_premium>(suma, moneda, pers, c, taxa);
+
+            }
+            catch(std::runtime_error &err){
+                std::cout<<err.what()<<std::endl;
+            }
+
+        }
+        banca.addCont(cont);
+
+
     }
     void cerinta1(){
-        std::cout<<"TODO cerinta 1"<<std::endl;
+        cont->afisare(std::cout);
     }
     void cerinta2(){
-        std::cout<<"TODO cerinta 2"<<std::endl;
+        float suma;
+        std::string moneda;
+        std::cout<<"Introduceti"<<std::endl<<"Suma depunere: ";
+        std::cin>>suma;
+        std::cout<<"Moneda depunere: "<<std::endl;
+        std::cin>>moneda;
+        cont->depunere(suma, moneda);
+        std::cout<<"Aveti: "<<cont->getSuma()<<moneda<<std::endl;
     }
     void cerinta3(){
-        std::cout<<"TODO cerinta 3"<<std::endl;
+        float suma;
+        std::string moneda;
+        std::cout<<"Introduceti"<<std::endl<<"Suma extragere: ";
+        std::cin>>suma;
+        std::cout<<"Moneda extragere: "<<std::endl;
+        std::cin>>moneda;
+        cont->extragere(suma, moneda);
+        std::cout<<"Aveti: "<<cont->getSuma()<<moneda<<std::endl;
     }
     void cerinta4(){
-        std::cout<<"TODO cerinta 4"<<std::endl;
+        float suma;
+
+        int iban;
+        std::cout<<"Introduceti"<<std::endl<<"Suma tranzactie: ";
+        std::cin>>suma;
+
+        std::cout<<"Introduceti iban-ul destinatarului: "<<std::endl;
+        std::cin>>iban;
+        int a= false;
+        for(auto i: banca.getConturi()){
+            if (i->getIban()== iban) {
+                cont->tranzactie(i, suma);
+                a=true;
+            }
+        }
+        if(!a) std::cout<<"Nu exista contul cu iban "<< iban<<std::endl;
+        std::cout<<"Aveti: "<<cont->getSuma()<<cont->getMoneda()<<std::endl;
+    }
+    void cerinta5(){
+        try{
+            dynamic_cast<contcurent&> (*cont).plata_utilitati();
+
+        }
+        catch(...){}
+    }
+    void cerinta6(){
+        try{
+            dynamic_cast<contcurent&> (*cont).plata_abonament();
+
+        }
+        catch(...){}
     }
 
-
+void cerinta7(){
+        return;
+    }
 };
 
 Menu *Menu::instance;

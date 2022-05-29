@@ -29,7 +29,13 @@ Menu *menu = Menu::getInstance();
         } else if(nr_cerinta == 4){
             menu -> cerinta4();
         }
-        else if(nr_cerinta == 5){
+        else if(nr_cerinta== 5){
+            menu -> cerinta5();
+        }
+        else if(nr_cerinta== 6){
+            menu->cerinta6();
+        }
+        else if(nr_cerinta == 7){
             break;
         }
     }

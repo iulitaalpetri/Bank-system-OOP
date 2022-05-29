@@ -25,16 +25,16 @@ void cont_premium::extragere(int sumaextr, const std::string &monedaextr) {
     else suma= suma- sumaextr;
 
 }
-void cont_premium::tranzactie(Cont &other_cont, int sumatranz) {
+void cont_premium::tranzactie(std::shared_ptr<Cont> other_cont, int sumatranz) {
     {
 
-        other_cont.setSuma( other_cont.getSuma()+ sumatranz * curs[{moneda, other_cont.getMoneda()}] );
+        other_cont->setSuma( other_cont->getSuma()+ sumatranz * curs[{moneda, other_cont->getMoneda()}] );
         if(sumatranz< 100) throw (eroare_tranzactie{"Tranzactie respinsa, suma prea mica \n"});
         else if(suma< sumatranz) throw (eroare_fonduri_insuficiente{"Fonduri insuficienta \n"});
         else {
             suma = suma - sumatranz;
             std::cout << "Tranzactie realizata cu succes. Ati trimis" << sumatranz << "lei catre contul cu iban:" <<
-                      other_cont.getIban()<<"."  << std::endl;}}}
+                      other_cont->getIban()<<"."  << std::endl;}}}
 
 
 void cont_premium::afisare(std::ostream &os) const {
