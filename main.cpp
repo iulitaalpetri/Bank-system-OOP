@@ -47,6 +47,9 @@ Menu *menu = Menu::getInstance();
         }
     }
     delete menu;
+    account_builder B;
+
+    cont_account acc= B.username("ana").parola("are").data_nastere(2, 4).sex("rtgv").build();
 
 
 

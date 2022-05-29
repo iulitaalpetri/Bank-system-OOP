@@ -66,8 +66,10 @@ public:
     account_builder& username(const std::string& username_ ){
         for(auto i: account.lista_conturi){
             if (i.username== username_) throw(eroare_account("Numele de utilizator este deja folosit."));
+            std::cout<<i.username;
         }
-        account.add_cont();
+
+
 
         account.username= username_;
         return *this;
@@ -81,11 +83,12 @@ public:
         account.data_nastere= d;
         return *this;
     }
-    account_builder& sex(std::string &sex_){
+    account_builder& sex(const std::string &sex_){
         account.sex =sex_;
         return *this;
     }
     cont_account build(){
+        account.add_cont();
         return account;
     }
 
