@@ -15,6 +15,7 @@ class Data{
     int luna;
     int an;
 public:
+    Data(){}
     Data(int luna_, int an_): luna(luna_), an(an_){}
 };
 class cont_account{
@@ -30,7 +31,7 @@ class cont_account{
 
 
 public:
-    cont_account()= default;
+    cont_account(){}
     cont_account(const std::string &username_, const std::string &parola_, int luna_, int an_, const std::string &sex_): username(username_), parola(parola_),
                                                                                                             data_nastere(luna_, an_), sex(sex_){
 
@@ -61,7 +62,7 @@ class account_builder{
     cont_account account;
     friend class cont_account;
 public:
-    account_builder()= default;
+    account_builder(){};
     account_builder& username(const std::string& username_ ){
         for(auto i: account.lista_conturi){
             if (i.username== username_) throw(eroare_account("Numele de utilizator este deja folosit."));

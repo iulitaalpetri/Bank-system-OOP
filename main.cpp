@@ -9,7 +9,6 @@
 #include "cont_standard.h"
 #include "Singleton.h"
 #include "Banca.h"
-#include "cont_account.h"
 
 int main()
 {
@@ -38,6 +37,12 @@ Menu *menu = Menu::getInstance();
             menu->cerinta6();
         }
         else if(nr_cerinta == 7){
+            menu->cerinta7();
+        }
+        else if(nr_cerinta==8){
+            menu->cerinta8();
+        }
+        else if(nr_cerinta== 9){
             break;
         }
     }

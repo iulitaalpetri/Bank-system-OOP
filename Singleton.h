@@ -15,6 +15,7 @@
 //#include "cont_standard.h"
 //#include "cont_premium.h"
 //meniu singleton
+#include "cont_account.h"
 class Menu {
 private:
     static Menu *instance;
@@ -28,6 +29,8 @@ private:
     friend class Titular;
     friend class Banca;
     int n;
+    account_builder B;
+    cont_account acc;
 
     Menu() {
 
@@ -46,14 +49,16 @@ public:
     }
     void showOptions(){
         std::cout<<"-------------------------------Meniu-------------------------------------------"<<std::endl;
-        std::cout<<"0. creare cont"<<std::endl;
+        std::cout<<"0. creare cont bancar"<<std::endl;
         std::cout<<"1. afisarea informatiilor pentru fiecare cont"<<std::endl;
         std::cout<<"2. depunere numerar"<<std::endl;
         std::cout<<"3. extragere numerar"<<std::endl;
         std::cout<<"4. efectuare tranzactie"<<std::endl;
         std::cout<<"5. plata utilitati(cont curent)"<<std::endl;
         std::cout<<"6. plata abonament telefon(cont curent)"<<std::endl;
-        std::cout<<"7. exit"<<std::endl;
+        std::cout<<"7. creare cont pe aplicatie"<<std::endl;
+        std::cout<<"8. Logare"<<std::endl;
+        std::cout<<"9. exit"<<std::endl;
         std::cout<<"----------------------------------------------------------------------------------"<<std::endl;
     }
     void cerinta0(){
@@ -235,8 +240,34 @@ public:
         }
         catch(...){}
     }
+void cerinta7(){//const std::string &username_, const std::string &parola_, int luna_, int an_, const std::string &sex_)
+        std::string nume;
+        std::string parola_, sex_;
+        int luna_, an_;
 
-void cerinta7(){
+
+    std::cout<<"Introduceti:"<<std::endl<<"Username:";
+    std::cin>>nume;
+    std::cout<<"parola: ";
+    std::cin>>parola_;
+    std::cout<<"Luna nasterii: ";
+    std::cin>>luna_;
+    std::cout<<"Anul nasterii";
+    std::cin>>an_;
+    std::cout<<"Sex: ";
+    std::cin>>sex_;
+     acc= B.username(nume).parola(parola_).data_nastere(luna_, an_).sex(sex_).build();
+
+    }
+    void cerinta8(){
+        std::string nume, parola_;
+        std::cout<<"Introduceti:"<<std::endl<<"Username:";
+        std::cin>>nume;
+        std::cout<<"parola: ";
+        std::cin>>parola_;
+        acc.logare(nume, parola_);
+    }
+void cerinta9(){
         return;
     }
 };
