@@ -19,7 +19,10 @@ public:
     explicit eroare_varsta(const std::string &arg);
 };
 
-
+class eroare_account: public erori{
+public:
+    explicit eroare_account(const std::string &arg);
+};
 
 class eroare_suma_cont : public erori{
 public:

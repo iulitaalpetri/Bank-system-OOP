@@ -5,12 +5,13 @@
 #include <vector>
 #include <map>
 #include "cont.h"
-
+#include "cont_account.h"
 class Banca{
 protected:
     std::string nume;
     std::string sucursala;
     std::vector<std::shared_ptr<Cont>> conturi;
+    std::vector<cont_account> lista_conturi;
 
 
 

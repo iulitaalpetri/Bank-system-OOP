@@ -8,6 +8,8 @@
 #include "exceptii.h"
 #include "cont_standard.h"
 #include "Singleton.h"
+#include "Banca.h"
+#include "cont_account.h"
 
 int main()
 {

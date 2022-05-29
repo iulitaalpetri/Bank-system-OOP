@@ -15,8 +15,7 @@ protected:
     int iban;
    std::shared_ptr<Titular> titular;
     std::map<std::pair<std::string, std::string>, double> curs;
-    friend class builder_cont;
-
+    friend class cont_account;
 
 
 
