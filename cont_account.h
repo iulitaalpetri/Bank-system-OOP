@@ -6,7 +6,6 @@
 #include <vector>
 #include <iostream>
 #include "exceptii.h"
-#include "Banca.h"
 
 #ifndef OOP_CONT_ACCOUNT_H
 #define OOP_CONT_ACCOUNT_H

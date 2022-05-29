@@ -5,7 +5,6 @@
 #include <vector>
 #include <map>
 #include "cont.h"
-#include "cont_account.h"
 class Banca{
 protected:
     std::string nume;
