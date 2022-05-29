@@ -25,21 +25,21 @@ class cont_account{
     std::string sex;
     int incercari=0;
     friend class account_builder;
-    Banca b;
+    static std::vector<cont_account> lista_conturi;
 
 
 
 
 public:
     cont_account()= default;
-    cont_account(const std::string &username_, const std::string &parola_, int luna_, int an_, const std::string &sex_, Banca &b_): username(username_), parola(parola_),
-                                                                                                            data_nastere(luna_, an_), sex(sex_), b(b_){
+    cont_account(const std::string &username_, const std::string &parola_, int luna_, int an_, const std::string &sex_): username(username_), parola(parola_),
+                                                                                                            data_nastere(luna_, an_), sex(sex_){
 
 
     }
 
     void logare(std::string nume, std::string parolaa){
-        for(auto i: b.lista_conturi){
+        for(auto i: lista_conturi){
             if (nume== i.username ) {if(i.parola== parolaa){incercari= 0;
             std::cout<<"Te- ai logat cu succes"<<std::endl;}
             else {
@@ -54,6 +54,9 @@ public:
         }
 
     }
+    void add_cont(){
+        lista_conturi.push_back(*this);
+    }
 };
 class account_builder{
     cont_account account;
@@ -61,10 +64,11 @@ class account_builder{
 public:
     account_builder()= default;
     account_builder& username(const std::string& username_ ){
-        for(auto i: account.b.lista_conturi){
+        for(auto i: account.lista_conturi){
             if (i.username== username_) throw(eroare_account("Numele de utilizator este deja folosit."));
         }
-        account.b.lista_conturi.push_back(*this);
+        account.add_cont();
+
         account.username= username_;
         return *this;
     }
@@ -92,6 +96,6 @@ class account_factory{
 public:
     static cont_account automat(){
         id++;
-        return cont_account("utilizator"+ std::to_string(id), "parola"+ std::to_string(id),0, 0, "-", Banca &b);
+        return cont_account("utilizator"+ std::to_string(id), "parola"+ std::to_string(id),0, 0, "-");
     }
 };
