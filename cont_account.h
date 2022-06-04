@@ -17,12 +17,16 @@ class Data{
 public:
     Data(){}
     Data(int luna_, int an_): luna(luna_), an(an_){}
+    friend std::ostream &operator <<(std::ostream &os, Data &d ){
+        std::cout<< "luna:"<<d.luna<<", an: "<<d.an<<std::endl;
+        return os;
+    }
 };
 class cont_account{
     std::string username;
     std::string parola;
-    Data data_nastere;
-    std::string sex;
+     Data data_nastere;
+     std::string sex;
     int incercari=0;
     friend class account_builder;
     static std::vector<cont_account> lista_conturi;
@@ -37,7 +41,10 @@ public:
 
 
     }
-
+friend std::ostream &operator<<(std::ostream &os, cont_account &ob){
+        std::cout<<"username: "<<ob.username<<" , Data nastere:  "<< ob.data_nastere<<", sex: "<<ob.sex<<std::endl;
+        return os;
+    }
     void logare(std::string nume, std::string parolaa){
         for(auto i: lista_conturi){
             if (nume== i.username ) {if(i.parola== parolaa){incercari= 0;
@@ -94,10 +101,10 @@ public:
 
 };
 
-class account_factory{
+class [[maybe_unused]] account_factory{
     static int id;
 public:
-    static cont_account automat(){
+    [[maybe_unused]] static cont_account automat(){
         id++;
         return cont_account("utilizator"+ std::to_string(id), "parola"+ std::to_string(id),0, 0, "-");
     }
