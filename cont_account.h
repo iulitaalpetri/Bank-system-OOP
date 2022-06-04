@@ -17,7 +17,7 @@ class Data{
 public:
     Data(){}
     Data(int luna_, int an_): luna(luna_), an(an_){}
-    friend std::ostream &operator <<(std::ostream &os, Data &d ){
+    friend std::ostream &operator <<(std::ostream &os, Data const &d ){
         std::cout<< "luna:"<<d.luna<<", an: "<<d.an<<std::endl;
         return os;
     }
@@ -41,11 +41,11 @@ public:
 
 
     }
-friend std::ostream &operator<<(std::ostream &os, cont_account &ob){
+friend std::ostream &operator<<(std::ostream &os, cont_account const  &ob){
         std::cout<<"username: "<<ob.username<<" , Data nastere:  "<< ob.data_nastere<<", sex: "<<ob.sex<<std::endl;
         return os;
     }
-    void logare(std::string nume, std::string parolaa){
+    void logare(std::string const nume, std::string const parolaa){
         for(auto i: lista_conturi){
             if (nume== i.username ) {if(i.parola== parolaa){incercari= 0;
             std::cout<<"Te- ai logat cu succes"<<std::endl;}

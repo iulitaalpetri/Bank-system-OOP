@@ -21,14 +21,14 @@ private:
     static Menu *instance;
     Banca banca;
     std::shared_ptr<Cont> cont;
-    std::shared_ptr<Cont> alt_cont;
+    //std::shared_ptr<Cont> alt_cont;
     std::shared_ptr<Titular> pers;
     std::vector<std::shared_ptr<Cont>> lista_conturi;
-    Banca b;
+    //Banca b;
     friend class Cont;
     friend class Titular;
     friend class Banca;
-    int n;
+    //int n;
     account_builder B;
     cont_account acc;
 

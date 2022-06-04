@@ -43,6 +43,7 @@ Menu *menu = Menu::getInstance();
             menu->cerinta8();
         }
         else if(nr_cerinta== 9){
+            menu->cerinta9();
             break;
         }
     }
