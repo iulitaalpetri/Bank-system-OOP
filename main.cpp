@@ -15,6 +15,8 @@ int main()
 Menu *menu = Menu::getInstance();
     int nr_cerinta;
 
+
+
     while(true){
         menu -> showOptions();
         std::cout<<"Introduceti id-ul cerintei: ";
